@@ -1,0 +1,11 @@
+﻿# Environment variables
+.env
+.env*.local
+
+# IDE & Editor
+.vscode/
+.idea/
+
+# Local cache & temp files
+.image-slots.state.json
+.thumbnail

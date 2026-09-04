@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JLabs — Software that ships. Products that last.</title>
+  <script src="./config.js"></script>
+  <script src="./support.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+    const SUPA = supabase.createClient(
+      window.SUPABASE_URL,
+      window.SUPABASE_ANON_KEY
+    );
+  </script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+      <script src="./image-slot.js"></script>
+      <style>
+        :root {
+          --ink: #1A1108;
+          --ink-rgb: 26, 17, 8;
+          --ink-soft: #2B1C10;
+          --ink-mid: #6B5A4C;
+          --surface: #FBF6F1;
+          --surface-rgb: 251, 246, 241;
+          --card: #FFFFFF;
+          --page: #EFE4DA;
+          --chip: #F6EDE6;
+          --line: #EFE4DB;
+          --accent: #F2661C;
+          --accent-rgb: 242, 102, 28;
+          --accent2: #C93E07;
+          --accent2-rgb: 201, 62, 7;
+          --accent3-rgb: 255, 175, 90;
+          --hot: radial-gradient(120% 200% at 8% 0%, #FF8A3D 0%, #F2661C 42%, #C93E07 100%);
+          --mid: #B85520;
+          --mid-deep: #9C4415;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        html,
+        body {
+          overflow-x: hidden;
+          overscroll-behavior-x: none;
+        }
+
+        body {
+          margin: 0;
+          background: var(--page);
+          font-family: 'Space Grotesk', sans-serif;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+          color: var(--ink);
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: var(--ink-mid);
+        }
+
+        input,
+        textarea,
+        button,
+        select {
+          font-family: inherit;
+        }
+
+        ::selection {
+          background: var(--ink);
+          color: var(--surface);
+        }
+
+        @keyframes tick {
+          from {
+            transform: translateX(0);
+          }
+
+          to {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes pulse {
+
+          0%,
+          100% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: .35;
+          }
+        }
+
+        @keyframes drift {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          34% {
+            transform: translate3d(7vw, 5vh, 0) scale(1.16);
+          }
+
+          67% {
+            transform: translate3d(-5vw, -4vh, 0) scale(.9);
+          }
+
+          100% {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+        }
+
+        @keyframes drift2 {
+          0% {
+            transform: translate3d(0, 0, 0) scale(1.05);
+          }
+
+          40% {
+            transform: translate3d(-8vw, -6vh, 0) scale(.92);
+          }
+
+          75% {
+            transform: translate3d(5vw, 6vh, 0) scale(1.2);
+          }
+
+          100% {
+            transform: translate3d(0, 0, 0) scale(1.05);
+          }
+        }
+
+        @keyframes floaty {
+
+          0%,
+          100% {
+            transform: translateY(0) rotate(-.6deg);
+          }
+
+          50% {
+            transform: translateY(-12px) rotate(.8deg);
+          }
+        }
+
+        @keyframes sweep {
+          0% {
+            transform: translateX(-140%) skewX(-14deg);
+          }
+
+          100% {
+            transform: translateX(320%) skewX(-14deg);
+          }
+        }
+
+        @keyframes rise {
+          from {
+            opacity: 0;
+            transform: translateY(115%);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes gridPan {
+          from {
+            background-position: 0 0;
+          }
+
+          to {
+            background-position: 64px 64px;
+          }
+        }
+
+        @keyframes spin {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes hue {
+
+          0%,
+          100% {
+            opacity: .5;
+          }
+
+          50% {
+            opacity: 1;
+          }
+        }
+
+        @media (max-width: 880px) {
+          #work article {
+            padding: 10px !important;
+          }
+
+          #work article>div {
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 26px 20px !important;
+            gap: 22px !important;
+          }
+
+          #work article h3 {
+            font-size: clamp(40px, 13vw, 72px) !important;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation: none !important;
+            transition: none !important;
+          }
+        }
+      </style>
+    </helmet>
+
+    <div id="v2-root"
+      style="--ink:#1A1108;--ink-rgb:26,17,8;--ink-soft:#2B1C10;--ink-mid:#6B5A4C;--surface:#FBF6F1;--surface-rgb:251,246,241;--card:#FFFFFF;--page:#EFE4DA;--chip:#F6EDE6;--line:#EFE4DB;--accent:#F2661C;--accent-rgb:242,102,28;--accent2:#C93E07;--accent2-rgb:201,62,7;--accent3-rgb:255,175,90;--hot:radial-gradient(120% 200% at 8% 0%, #FF8A3D 0%, #F2661C 42%, #C93E07 100%); --mid:#B85520; --mid-deep:#9C4415;background:var(--page);padding:0;min-height:100vh;">
+
+      <div style="position:fixed;top:0;left:0;right:0;height:3px;z-index:90;pointer-events:none;">
+        <div id="v2-progress"
+          style="height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--accent) 40%,var(--accent2));">
+        </div>
+      </div>
+      <div style="width:100%;margin:0 auto;display:grid;gap:0;">
+
+        <!-- ================= HERO (split / orange) ================= -->
+        <section data-screen-label="Hero"
+          style="position:relative;background:radial-gradient(120% 110% at 12% 8%, #FF8A3D 0%, #F2661C 38%, #C93E07 72%, #8E2704 100%);overflow:hidden;min-height:clamp(640px,100vh,1200px);display:flex;">
+
+          <!-- LEFT / orange stage -->
+          <div
+            style="position:relative;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(20px,2.4vw,38px);padding-right:64%;min-height:clamp(560px,80vh,1000px);">
+
+            <div aria-hidden="true"
+              style="position:absolute;inset:-20% -10%;pointer-events:none;background:radial-gradient(closest-side, rgba(255,196,120,.55), rgba(255,196,120,0) 70%);animation:drift 26s ease-in-out infinite;">
+            </div>
+            <div aria-hidden="true"
+              style="position:absolute;right:-6%;top:8%;width:46%;aspect-ratio:1;border-radius:50%;pointer-events:none;background:radial-gradient(closest-side, rgba(255,120,40,.5), rgba(255,120,40,0) 72%);animation:drift2 32s ease-in-out infinite;">
+            </div>
+
+            <div style="position:absolute;left:50%;transform:translateX(-50%);bottom:0;top:0;width:29%;z-index:5;">
+              <img src="images/jagadish-hero.png" alt="Jagadish — Founder of JLabs"
+                style="width:100%;height:100%;object-fit:contain;object-position:bottom center;display:block;" />
+            </div>
+
+            <a href="#top"
+              style="position:relative;z-index:3;display:flex;align-items:center;gap:10px;align-self:flex-start;">
+              <span
+                style="width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);display:grid;place-items:center;color:#fff;font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:16px;line-height:1;">J</span>
+              <span
+                style="font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;letter-spacing:-.01em;color:#fff;">JLabs</span>
+            </a>
+
+            <div style="position:relative;z-index:3;margin:auto 0;">
+              <h1
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(72px,13vw,210px);line-height:.82;letter-spacing:-.03em;margin:0 0 clamp(16px,2vw,26px);color:#fff;text-transform:uppercase;">
+                <span style="display:block;overflow:hidden;"><span
+                    style="display:block;animation:rise 1.1s cubic-bezier(.16,1,.3,1) both;">Build</span></span>
+              </h1>
+              <p
+                style="margin:0 0 clamp(20px,2.4vw,32px);font-size:clamp(24px,2.5vw,36px);line-height:1.35;color:rgba(255,255,255,.95);max-width:24ch;text-wrap:pretty;font-weight:500;">
+                Software that ships.<br />Products that last.</p>
+              <a href="#work"
+                style="display:inline-flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:#fff;border:1px solid rgba(255,255,255,.65);padding:16px 26px;border-radius:999px;white-space:nowrap;transition:background .3s ease, color .3s ease, transform .3s ease;"
+                style-hover="background:#fff;color:#C93E07;transform:translateY(-2px);">VIEW WORK <span
+                  style="font-size:13px;">&#8599;</span></a>
+            </div>
+
+          </div>
+
+          <!-- RIGHT / white column -->
+          <div
+            style="position:absolute;z-index:4;top:clamp(14px,1.8vw,30px);right:clamp(14px,1.8vw,30px);bottom:clamp(14px,1.8vw,30px);width:52%;background:var(--card);border-radius:clamp(20px,2.2vw,34px);box-shadow:-24px 30px 90px rgba(60,18,0,.26);display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:clamp(14px,1.6vw,24px);padding:clamp(18px,1.9vw,28px);overflow:hidden;">
+            <div
+              style="width:100%;display:flex;align-items:center;justify-content:flex-end;gap:clamp(10px,1.4vw,18px);flex-wrap:wrap;">
+              <a href="#work"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.75);white-space:nowrap;">WORK</a>
+              <a href="#capabilities"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.75);white-space:nowrap;">SERVICES</a>
+              <a href="#process"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.75);white-space:nowrap;">PROCESS</a>
+              <a href="#engagement"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.75);white-space:nowrap;">MODELS</a>
+              <a href="#about"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.75);white-space:nowrap;">ABOUT</a>
+              <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank"
+                rel="noopener noreferrer"
+                style="display:inline-flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:#0A66C2;white-space:nowrap;font-weight:600;">
+                <svg style="width:14px;height:14px;flex:none;" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#0A66C2"
+                    d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  <path fill="#FFFFFF"
+                    d="M7.12 20.452H3.555V9h3.565v11.452zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm15.11 13.019h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                </svg>
+                LINKEDIN &#8599;
+              </a>
+            </div>
+
+            <div style="width:min(100%,290px);">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(12px,1.4vw,18px);">
+                <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:#C93E07;white-space:nowrap;">AVAILABLE
+                  FOR</span>
+                <span
+                  style="width:7px;height:7px;border-radius:50%;background:#F2661C;animation:pulse 2.4s ease-in-out infinite;"></span>
+              </div>
+              <h2
+                style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(26px,2.6vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 0 clamp(14px,1.6vw,20px);color:var(--ink);">
+                Client<br />Projects</h2>
+              <p
+                style="margin:0 0 clamp(14px,1.6vw,20px);font-size:14px;line-height:1.6;color:rgba(var(--ink-rgb),.62);max-width:26ch;text-wrap:pretty;">
+                Mobile apps, full-stack systems and AI products &mdash; scoped, built and shipped to your requirements.
+              </p>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div>
+                  <div
+                    style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(30px,3vw,44px);line-height:.9;color:#C93E07;">
+                    04</div>
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:6px;">
+                    Products shipped</div>
+                </div>
+                <div>
+                  <div
+                    style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(30px,3vw,44px);line-height:.9;color:#C93E07;">
+                    6&ndash;8</div>
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:6px;">
+                    Weeks to MVP</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="width:min(100%,290px);background:var(--surface);border:1px solid rgba(var(--ink-rgb),.09);border-radius:18px;padding:22px;display:grid;gap:14px;">
+              <span
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:34px;line-height:.7;color:#F2661C;">&ldquo;</span>
+              <p style="margin:0;font-size:13.5px;line-height:1.65;color:rgba(var(--ink-rgb),.72);text-wrap:pretty;">
+                JLabs delivered outstanding work that exceeded our expectations &mdash; on scope and on time.
+              </p>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink);text-transform:uppercase;font-weight:600;">
+                  Chaitanya</div>
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;">
+                  Founder of Studbridge</div>
+                <a href="https://www.studbridge.com/" target="_blank" rel="noopener noreferrer"
+                  title="StudBridge | Mentorship, Career Guidance &amp; Industry-Led Courses"
+                  style="display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:#C93E07;text-decoration:none;margin-top:4px;font-weight:600;width:fit-content;transition:opacity .2s ease;"
+                  onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+                  studbridge.com &#8599;
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= TICKER ================= -->
+        <section style="background:var(--mid);overflow:hidden;padding:16px 0;">
+          <div style="display:flex;width:200%;animation:tick 26s linear infinite;">
+            <div
+              style="display:flex;gap:44px;width:50%;flex:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:rgba(var(--surface-rgb),.8);white-space:nowrap;padding-right:44px;">
+              <span>PROTEINIX</span><span style="color:rgba(255,255,255,.85);">&#9679;</span><span>PRECARE
+                AI</span><span style="color:rgba(255,255,255,.85);">&#9679;</span><span>VITAD</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>CODESAFE</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>DESIGN &amp; ENGINEERING</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>BUILT TO YOUR REQUIREMENTS</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span>
+            </div>
+            <div aria-hidden="true"
+              style="display:flex;gap:44px;width:50%;flex:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:rgba(var(--surface-rgb),.8);white-space:nowrap;padding-right:44px;">
+              <span>PROTEINIX</span><span style="color:rgba(255,255,255,.85);">&#9679;</span><span>PRECARE
+                AI</span><span style="color:rgba(255,255,255,.85);">&#9679;</span><span>VITAD</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>CODESAFE</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>DESIGN &amp; ENGINEERING</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span><span>BUILT TO YOUR REQUIREMENTS</span><span
+                style="color:rgba(255,255,255,.85);">&#9679;</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= WHAT I BUILD ================= -->
+        <section id="capabilities" style="background:var(--surface);padding:clamp(30px,4vw,70px) 0;overflow:hidden;">
+          <div
+            style="padding:0 clamp(18px,2.4vw,44px);display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(26px,3vw,44px);">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                01 / WHAT WE BUILD</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
+                What we build<br />for clients</h2>
+            </div>
+            <p
+              style="margin:0;font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.66);max-width:380px;text-wrap:pretty;">
+              From mobile apps to full-stack systems, we build products to your requirements &mdash; scoped, designed,
+              engineered and shipped.</p>
+          </div>
+          <div ref="{{ capScroll }}"
+            style="display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;padding:0 clamp(18px,2.4vw,44px) 6px;">
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:7px 13px;border-radius:999px;">A</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
+                  Mobile products</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">Client mobile apps
+                  designed, developed and shipped to the Play Store.</p>
+              </div>
+            </article>
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:7px 13px;border-radius:999px;">B</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
+                  Full-stack products</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">Complete web
+                  platforms built to spec &mdash; frontend, backend, APIs, databases and deployment.</p>
+              </div>
+            </article>
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--mid);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--ink);background:var(--surface);padding:7px 13px;border-radius:999px;">C</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--card);text-transform:uppercase;">
+                  AI-powered products</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.9);">AI features and
+                  intelligent workflows built into your product where they earn their place.</p>
+              </div>
+            </article>
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:7px 13px;border-radius:999px;">D</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
+                  MVP development</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">We turn your idea
+                  into a usable product fast, without unnecessary complexity.</p>
+              </div>
+            </article>
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:7px 13px;border-radius:999px;">E</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
+                  UI design</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">Interfaces, flows
+                  and design systems &mdash; drawn before code so decisions stay cheap.</p>
+              </div>
+            </article>
+            <article
+              style="flex:0 0 clamp(258px,27vw,368px);min-width:0;background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:22px;padding:26px;display:grid;gap:18px;align-content:space-between;min-height:320px;">
+              <span
+                style="justify-self:start;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:7px 13px;border-radius:999px;">F</span>
+              <div>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
+                  Waitlist &amp; validation</h3>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">We don't build blindly. Mid-development, we launch live waitlist and validation pages early to capture real demand before day one.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ================= WORK (full-screen stack) ================= -->
+        <section id="work" style="overflow-x:clip;">
+          <div
+            style="background:var(--surface);padding:clamp(30px,4vw,64px) clamp(24px,3vw,54px) clamp(30px,3.4vw,50px);display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                02 / CLIENT WORK</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
+                Products we<br />build for clients</h2>
+            </div>
+            <p
+              style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.6);text-transform:uppercase;">
+              Built to client requirements, shipped to real users</p>
+          </div>
+
+          <div style="position:relative;overflow-x:clip;">
+            <div aria-hidden="true"
+              style="position:sticky;top:0;height:100svh;background:radial-gradient(120% 110% at 12% 8%, #FF8A3D 0%, #F2661C 38%, #C93E07 72%, #8E2704 100%);z-index:0;">
+            </div>
+            <div ref="{{ projStage }}" style="margin-top:-100svh;position:relative;z-index:1;">
+              <article id="proteinix"
+                style="position:sticky;top:0;height:100svh;min-height:100svh;pointer-events:none;display:flex;align-items:center;background:transparent;padding:clamp(10px,1.4vw,22px) clamp(12px,1.6vw,26px) clamp(14px,1.8vw,30px);">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;height:min(88svh,960px);min-height:min(88svh,960px);max-height:min(88svh,960px);overflow:hidden;box-sizing:border-box;margin:0 auto;will-change:transform,opacity;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(255,255,255,.55);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.3);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                  <div
+                    style="min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div
+                      style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);flex-wrap:wrap;">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">01</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
+                        NUTRITION &amp; FITNESS APP</span>
+                      <span
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#B85520;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
+                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>ONGOING</span>
+                      <a href="https://proteinix.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        title="Proteinix Waitlist"
+                        style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#fff;background:#C93E07;padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap;transition:background .2s ease;"
+                        onmouseover="this.style.background='#F2661C'" onmouseout="this.style.background='#C93E07'">
+                        JOIN WAITLIST &#8599;
+                      </a>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(14px,2.1vh);color:var(--ink);text-transform:uppercase;">
+                      Proteinix</h3>
+                    <p
+                      style="font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(22px,2.1vh);max-width:460px;text-wrap:pretty;">
+                      An AI-powered nutrition and fitness tracker. Log a meal by photo, voice or text and AI estimates
+                      the calories and macros, then coaches the day around four goals &mdash; steps, macros, water and
+                      sleep.</p>
+                    <ul style="list-style:none;padding:0;margin:0 0 min(18px,2.1vh);display:grid;gap:7px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>AI
+                        meal logging from a photo, voice note or plain text
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Bloom-ring
+                        dashboard for steps, macros, water and sleep
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Passive
+                        sleep and step tracking with Health Connect
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Offline-first
+                        logging with a background sync queue
+                      </li>
+                    </ul>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">GEMINI
+                        VISION</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">SUPABASE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OFFLINE
+                        SYNC</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">HEALTH
+                        CONNECT</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(18px,2.2vh);flex-wrap:wrap;">
+                      <a href="https://proteinix.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        style="display:inline-flex;align-items:center;gap:8px;background:#C93E07;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;text-decoration:none;transition:all .2s ease;box-shadow:0 8px 24px rgba(201,62,7,.28);"
+                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
+                        onmouseout="this.style.background='#C93E07';this.style.transform='none';">
+                        <span>Join Waitlist</span>
+                        <span>&#8599;</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;">
+                    <div style="position:relative;width:100%;height:min(76svh,860px);overflow:hidden;">
+                      <div onClick="{{ openProteinix }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:740/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ pX0 }},{{ pY0 }}) scale({{ pS0 }});opacity:{{ pO0 }};z-index:{{ pZ0 }};">
+                        <img src="images/proteinix-home.png" alt="Proteinix home dashboard"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openProteinix }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:740/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ pX1 }},{{ pY1 }}) scale({{ pS1 }});opacity:{{ pO1 }};z-index:{{ pZ1 }};">
+                        <img src="images/proteinix-nutrition.png" alt="Proteinix nutrition screen"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openProteinix }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:740/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ pX2 }},{{ pY2 }}) scale({{ pS2 }});opacity:{{ pO2 }};z-index:{{ pZ2 }};">
+                        <img src="images/proteinix-weekly.png" alt="Proteinix weekly overview"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openProteinix }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:740/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ pX3 }},{{ pY3 }}) scale({{ pS3 }});opacity:{{ pO3 }};z-index:{{ pZ3 }};">
+                        <img src="images/proteinix-analyze.png" alt="Proteinix AI meal analysis screen"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openProteinix }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:740/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ pX4 }},{{ pY4 }}) scale({{ pS4 }});opacity:{{ pO4 }};z-index:{{ pZ4 }};">
+                        <img src="images/proteinix-coach.png" alt="Proteinix AI coach screen"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:7px;align-items:center;">
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ pDot0 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ pDot1 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ pDot2 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ pDot3 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ pDot4 }};"></span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article id="precare"
+                style="position:sticky;top:0;height:100svh;min-height:100svh;pointer-events:none;margin-top:-100svh;display:flex;align-items:center;background:transparent;padding:clamp(10px,1.4vw,22px) clamp(12px,1.6vw,26px) clamp(14px,1.8vw,30px);">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;height:min(88svh,960px);min-height:min(88svh,960px);max-height:min(88svh,960px);overflow:hidden;box-sizing:border-box;margin:0 auto;will-change:transform,opacity;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(255,255,255,.55);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.3);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                  <div
+                    style="display:flex;flex-direction:column;gap:min(12px,1.7vh);width:100%;min-height:0;height:100%;overflow:hidden;justify-content:center;">
+                    <div
+                      style="position:relative;width:100%;flex:1 1 auto;min-height:0;max-height:min(52svh,520px);overflow:hidden;">
+                      <div onClick="{{ openPrecare }}"
+                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX0 }},{{ cY0 }}) scale({{ cS0 }});opacity:{{ cO0 }};z-index:{{ cZ0 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
+                        </div>
+                        <img src="images/precare-upload.png" alt="PreCare report upload screen"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openPrecare }}"
+                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX1 }},{{ cY1 }}) scale({{ cS1 }});opacity:{{ cO1 }};z-index:{{ cZ1 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
+                        </div>
+                        <img src="images/precare-analysis.png" alt="PreCare risk analysis and biomarker table"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openPrecare }}"
+                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX2 }},{{ cY2 }}) scale({{ cS2 }});opacity:{{ cO2 }};z-index:{{ cZ2 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
+                        </div>
+                        <img src="images/precare-doctors.png"
+                          alt="PreCare nearby gynecologists with AI-recommended clinic"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openPrecare }}"
+                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX3 }},{{ cY3 }}) scale({{ cS3 }});opacity:{{ cO3 }};z-index:{{ cZ3 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
+                        </div>
+                        <img src="images/precare-booking.png" alt="PreCare priority appointment booking confirmation"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:7px;align-items:center;">
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot0 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot1 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot2 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot3 }};"></span>
+                    </div>
+                  </div>
+                  <div
+                    style="min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">02</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
+                        PREGNANCY COMPANION &middot; WEB APP</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(14px,2.1vh);color:var(--ink);text-transform:uppercase;">
+                      Precare AI</h3>
+                    <p
+                      style="font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(22px,2.1vh);max-width:460px;text-wrap:pretty;">
+                      An AI agent that reads pregnancy lab reports, explains them in plain language, and connects the
+                      patient to the right care nearby &mdash; upload to booked appointment in one flow.</p>
+                    <ul
+                      style="list-style:none;padding:0;margin:0 0 min(18px,2.1vh);display:grid;gap:7px;max-width:480px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Upload
+                        a photo or PDF of a checkup report and get a warm, plain-language summary of what each value
+                        means
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);">
+                        <span style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>A
+                        single Low / Medium / High risk verdict, so nothing is left to guesswork
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Actionable
+                        next steps &mdash; what to watch for and what to ask the doctor
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Nearby
+                        gynecologists and maternity clinics found by location, with the best-suited one recommended for
+                        that report
+                      </li>
+                    </ul>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">AI
+                        AGENT</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OCR
+                        + LLM</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OPENSTREETMAP</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">WEB
+                        APP</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(18px,2.2vh);flex-wrap:wrap;">
+                      <button type="button" onClick="{{ openPrecare }}"
+                        style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
+                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
+                        onmouseout="this.style.background='#1A1108';this.style.transform='none';">
+                        <span>View Screens &amp; Flow</span>
+                        <span>&#8599;</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article id="vitad"
+                style="position:sticky;top:0;height:100svh;min-height:100svh;pointer-events:none;margin-top:-100svh;display:flex;align-items:center;background:transparent;padding:clamp(10px,1.4vw,22px) clamp(12px,1.6vw,26px) clamp(14px,1.8vw,30px);">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;height:min(88svh,960px);min-height:min(88svh,960px);max-height:min(88svh,960px);overflow:hidden;box-sizing:border-box;margin:0 auto;will-change:transform,opacity;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(255,255,255,.55);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.3);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                  <div
+                    style="min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">03</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">HOME
+                        VITAMIN D TESTING</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(14px,2.1vh);color:var(--ink);text-transform:uppercase;">
+                      Vitad</h3>
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.55);margin:0 0 min(16px,2.1vh);">
+                      GOOGLE GEMINI VISION &middot; ANDROID APP</div>
+                    <p
+                      style="font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(18px,2.1vh);max-width:460px;text-wrap:pretty;">
+                      An intelligent Android app that reads Vitamin D test strip images with Gemini Vision AI &mdash;
+                      instant concentration readings in ng/mL, clinical risk classification, and levels tracked over
+                      time.</p>
+                    <ul
+                      style="list-style:none;padding:0;margin:0 0 min(22px,2.1vh);display:grid;gap:9px;max-width:460px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;margin-top:7px;"></span>Photograph
+                        or upload a strip &mdash; the model returns a concentration reading in seconds.
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;margin-top:7px;"></span>Results
+                        classified into clinical risk bands: deficient, insufficient, sufficient.
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;margin-top:7px;"></span>Downloadable
+                        PDF medical reports to share with a clinician.
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;margin-top:7px;"></span>Interactive
+                        trend analytics across every scan in the patient history.
+                      </li>
+                    </ul>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">GEMINI
+                        VISION</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">PDF
+                        REPORTS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">TREND
+                        ANALYTICS</span>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(18px,2.2vh);flex-wrap:wrap;">
+                      <button type="button" onClick="{{ openVitad }}"
+                        style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
+                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
+                        onmouseout="this.style.background='#1A1108';this.style.transform='none';">
+                        <span>View Screens &amp; Diagnostics</span>
+                        <span>&#8599;</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    style="display:flex;width:100%;gap:clamp(8px,1.2vw,16px);justify-content:center;align-items:flex-start;min-width:0;">
+                    <div onClick="{{ openVitad }}"
+                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
+                      <img src="images/vitad-scan.jpeg" alt="Vitad scan test strip screen"
+                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
+                    </div>
+                    <div onClick="{{ openVitad }}"
+                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(58svh * 807 / 1600, 34%);aspect-ratio:807/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.2);">
+                      <img src="images/vitad-home.jpeg" alt="Vitad home dashboard"
+                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
+                    </div>
+                    <div onClick="{{ openVitad }}"
+                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
+                      <img src="images/vitad-history.jpeg" alt="Vitad scan history"
+                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article id="codesafe"
+                style="position:sticky;top:0;height:100svh;min-height:100svh;pointer-events:none;margin-top:-100svh;display:flex;align-items:center;background:transparent;padding:clamp(10px,1.4vw,22px) clamp(12px,1.6vw,26px) clamp(14px,1.8vw,30px);">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;height:min(88svh,960px);min-height:min(88svh,960px);max-height:min(88svh,960px);overflow:hidden;box-sizing:border-box;margin:0 auto;will-change:transform,opacity;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(255,255,255,.55);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.3);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                  <div
+                    style="display:flex;flex-direction:column;gap:min(12px,1.7vh);width:100%;min-height:0;height:100%;overflow:hidden;justify-content:center;">
+                    <div
+                      style="position:relative;width:100%;flex:1 1 auto;min-height:0;max-height:min(52svh,520px);overflow:hidden;">
+                      <div onClick="{{ openCodesafe }}"
+                        style="position:absolute;left:50%;top:50%;width:76%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ sX0 }},{{ sY0 }}) scale({{ sS0 }});opacity:{{ sO0 }};z-index:{{ sZ0 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
+                        </div>
+                        <img src="images/codesafe-1.jpeg" alt="CodeSafe landing page"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openCodesafe }}"
+                        style="position:absolute;left:50%;top:50%;width:76%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ sX1 }},{{ sY1 }}) scale({{ sS1 }});opacity:{{ sO1 }};z-index:{{ sZ1 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
+                        </div>
+                        <img src="images/codesafe-2.jpeg" alt="Security scan intake"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openCodesafe }}"
+                        style="position:absolute;left:50%;top:50%;width:76%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ sX2 }},{{ sY2 }}) scale({{ sS2 }});opacity:{{ sO2 }};z-index:{{ sZ2 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
+                        </div>
+                        <img src="images/codesafe-3.jpeg" alt="Security analysis pipeline"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                      <div onClick="{{ openCodesafe }}"
+                        style="position:absolute;left:50%;top:50%;width:76%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ sX3 }},{{ sY3 }}) scale({{ sS3 }});opacity:{{ sO3 }};z-index:{{ sZ3 }};">
+                        <div
+                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
+                          <span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
+                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
+                          <span
+                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
+                        </div>
+                        <img src="images/codesafe-4.jpeg" alt="Security scan report"
+                          style="width:100%;display:block;background:var(--card);" />
+                      </div>
+                    </div>
+                    <div style="display:flex;gap:7px;align-items:center;">
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ sDot0 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ sDot1 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ sDot2 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ sDot3 }};"></span>
+                    </div>
+                  </div>
+                  <div
+                    style="min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">04</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
+                        CODE REVIEW</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(14px,2.1vh);color:var(--ink);text-transform:uppercase;">
+                      CodeSafe</h3>
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.55);margin:0 0 min(16px,2.1vh);">
+                      NEXT.JS &middot; TYPESCRIPT &middot; GOOGLE GEMINI &middot; TREE-SITTER &middot; SUPABASE</div>
+                    <p
+                      style="font-size:min(14.5px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      A security scanner for AI-generated code. Six specialist AI agents scan a codebase in parallel
+                      &mdash; each covering one domain: secrets, authentication, injection, cryptography, AI
+                      anti-patterns and production readiness.</p>
+                    <ul
+                      style="list-style:none;padding:0;margin:0 0 min(22px,2.1vh);display:grid;gap:9px;max-width:500px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;transform:translateY(-3px);"></span>Builds
+                        a dependency graph of the whole project instead of reading files one at a time.
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;transform:translateY(-3px);"></span>Catches
+                        vulnerabilities that only exist between files &mdash; an injection chain from an API route
+                        through a service layer into a database query.
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.5;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;transform:translateY(-3px);"></span>Four
+                        of six pipeline stages are pure static analysis, no LLM &mdash; fast, cheap and reproducible
+                        scans.
+                      </li>
+                    </ul>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:min(18px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">6
+                        AGENTS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">DEPENDENCY
+                        GRAPH</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">STATIC
+                        ANALYSIS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">GEMINI</span>
+                    </div>
+                    <a href="https://codesafe.co.in/" target="_blank" rel="noopener"
+                      style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
+                      style-hover="background:#C93E07;transform:translateY(-2px);">VISIT CODESAFE.CO.IN <span
+                        style="font-size:13px;">&#8599;</span></a>
+                  </div>
+                </div>
+              </article>
+              <div aria-hidden="true" style="height:300svh;"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PROCESS ================= -->
+        <section id="process" style="background:var(--ink);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);">
+          <div
+            style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(26px,3vw,48px);">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.8);margin-bottom:14px;">
+                04 / PROCESS</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
+                Idea to product</h2>
+            </div>
+            <p
+              style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.9);text-transform:uppercase;max-width:32ch;">
+              Six steps. No status theatre.</p>
+          </div>
+          <div
+            style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:rgba(var(--surface-rgb),.16);border:1px solid rgba(var(--surface-rgb),.16);border-radius:20px;overflow:hidden;">
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">01</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Tell me the idea</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">A short brief is enough.
+                No spec required.</p>
+            </div>
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">02</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Understand the problem</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">Who it's for, what breaks
+                today, what success looks like.</p>
+            </div>
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">03</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Define the product</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">Scope for v1. What ships
+                now, what waits.</p>
+            </div>
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">04</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Design the experience</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">Screens and flows before
+                code, so decisions are cheap.</p>
+            </div>
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">05</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Build &amp; Validate</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">We don't build blindly. Mid-development, we deploy live waitlists before full completion to capture real demand &mdash; alongside working builds you can hold.</p>
+            </div>
+            <div
+              style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
+              style-hover="background:var(--ink-soft);">
+              <span
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.9);">06</span>
+              <h3
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
+                Launch</h3>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">Ship it, watch it, fix
+                what real use exposes.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+        <section id="about" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);">
+          <div
+            style="display:grid;grid-template-columns:1fr min(340px,42%);gap:clamp(30px,4vw,70px);align-items:center;">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                05 / ABOUT</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(42px,6.4vw,120px);line-height:.84;letter-spacing:-.02em;margin:0 0 22px;color:var(--ink);text-transform:uppercase;">
+                Your team for<br />the whole product</h2>
+              <p
+                style="font-size:17px;line-height:1.62;color:rgba(var(--ink-rgb),.72);margin:0 0 18px;max-width:520px;text-wrap:pretty;">
+                I'm Jagadish, founder of JLabs. We take on client products end to end &mdash; mobile apps,
+                full-stack systems and AI features &mdash; built exactly to your requirements. No handoffs between a
+                designer, a frontend dev and a backend dev: one team holds the whole thing, so it ships.</p>
+              <p
+                style="font-size:17px;line-height:1.62;color:rgba(var(--ink-rgb),.72);margin:0 0 26px;max-width:520px;text-wrap:pretty;">
+                Everything in the work section is real, running software we designed and engineered &mdash; built,
+                debugged and maintained, including the unglamorous parts like offline sync, notification reliability and
+                on-device diagnostics.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:9px 15px;border-radius:999px;white-space:nowrap;">PRODUCT
+                  DESIGN</span>
+                <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:9px 15px;border-radius:999px;white-space:nowrap;">MOBILE
+                  ENGINEERING</span>
+                <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:9px 15px;border-radius:999px;white-space:nowrap;">AI
+                  INTEGRATION</span>
+              </div>
+            </div>
+
+            <!-- Founder photo -->
+            <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+              <div style="position:relative;width:100%;max-width:300px;">
+                <!-- Decorative orange ring -->
+                <div
+                  style="position:absolute;inset:-8px;border-radius:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));opacity:.18;pointer-events:none;">
+                </div>
+                <div
+                  style="position:relative;width:100%;aspect-ratio:3/4;border-radius:22px;overflow:hidden;border:2px solid rgba(var(--ink-rgb),.1);background:var(--chip);">
+                  <img src="images/jagadish-about.png" alt="Jagadish — Founder of JLabs"
+                    style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;" />
+                </div>
+              </div>
+              <!-- Name & title badge -->
+              <div style="text-align:center;">
+                <div
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:22px;letter-spacing:-.01em;color:var(--ink);text-transform:uppercase;">
+                  Jagadish</div>
+                <div
+                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:4px;">
+                  Founder &middot; JLabs</div>
+              </div>
+              <!-- Trust indicator & LinkedIn -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+                <div
+                  style="display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid rgba(var(--ink-rgb),.12);border-radius:999px;padding:8px 16px;">
+                  <span style="width:7px;height:7px;border-radius:50%;background:#22c55e;flex:none;"></span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.6);text-transform:uppercase;">Available
+                    for new projects</span>
+                </div>
+                <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank"
+                  rel="noopener noreferrer"
+                  style="display:inline-flex;align-items:center;gap:8px;background:#0A66C2;color:#fff;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;padding:9px 18px;border-radius:999px;text-transform:uppercase;transition:opacity .2s ease;"
+                  style-hover="opacity:.9;">
+                  <svg style="width:14px;height:14px;flex:none;" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#FFFFFF"
+                      d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    <path fill="#0A66C2"
+                      d="M7.12 20.452H3.555V9h3.565v11.452zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm15.11 13.019h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+                  </svg>
+                  Connect on LinkedIn &#8599;
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= ENGAGEMENT MODELS ================= -->
+        <section id="engagement" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(26px,3vw,48px);">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                06 / HOW WE WORK</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
+                Engagement<br />models</h2>
+            </div>
+            <p
+              style="margin:0;font-size:16px;line-height:1.6;color:rgba(var(--ink-rgb),.68);max-width:400px;text-wrap:pretty;">
+              Clear deliverables. Zero bloated agency fees. Pick the structure that fits your product stage.</p>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(16px,2vw,24px);">
+            <!-- Model 1: MVP Sprint -->
+            <div style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">01</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#C93E07;border:1px solid rgba(201,62,7,.3);padding:6px 12px;border-radius:999px;font-weight:600;">6&ndash;8 WEEKS</span>
+                </div>
+                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
+                  Fixed-Scope MVP</h3>
+                <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(var(--ink-rgb),.7);">
+                  Turn an idea into a production-grade product on the Play Store, App Store, or web. Fixed scope, fixed timeline, zero bloat.
+                </p>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Architecture &amp; full UI/UX design system
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Frontend, backend, database &amp; AI integrations
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>App Store &amp; Play Store launch submission
+                  </li>
+                </ul>
+              </div>
+              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+                Start an MVP &#8594;
+              </a>
+            </div>
+
+            <!-- Model 2: Pre-Launch Validation Sprint -->
+            <div style="background:var(--mid);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 24px 64px rgba(60,18,0,.22);">
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);background:var(--surface);padding:6px 12px;border-radius:999px;">02</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#fff;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;font-weight:600;">1&ndash;2 WEEKS</span>
+                </div>
+                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--card);text-transform:uppercase;margin:0 0 12px;">
+                  Waitlist &amp; Validation</h3>
+                <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);">
+                  Test real market demand before spending full development budgets. High-converting waitlist page, copy &amp; lead engine.
+                </p>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Interactive waitlist &amp; early access landing page
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Email capture, analytics &amp; lead tracking
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Fast deployment ready for investor pitches
+                  </li>
+                </ul>
+              </div>
+              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+                Launch a Waitlist &#8594;
+              </a>
+            </div>
+
+            <!-- Model 3: Product Retainer -->
+            <div style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
+              <div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">03</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);border:1px solid rgba(var(--ink-rgb),.2);padding:6px 12px;border-radius:999px;font-weight:600;">MONTHLY SPRINT</span>
+                </div>
+                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
+                  Dedicated Partner</h3>
+                <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(var(--ink-rgb),.7);">
+                  For funded startups &amp; growing teams needing a reliable product squad holding design, engineering, and AI feature releases.
+                </p>
+                <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Continuous feature delivery &amp; weekly shipping
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Direct Slack / async communication with founder
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Pause or cancel anytime as priorities shift
+                  </li>
+                </ul>
+              </div>
+              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+                Hire as Partner &#8594;
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= START ================= -->
+        <section id="start" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
+          <div
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(30px,4vw,60px);align-items:start;">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                07 / START</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,8.4vw,158px);line-height:.82;letter-spacing:-.02em;margin:0 0 20px;color:var(--ink);text-transform:uppercase;">
+                Build with me</h2>
+              <p
+                style="font-size:17px;line-height:1.62;color:rgba(var(--ink-rgb),.72);margin:0 0 24px;max-width:440px;text-wrap:pretty;">
+                Tell us what you want built. A few lines is enough &mdash; we'll come back with scope, a timeline and
+                what v1 should be.</p>
+              <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+                <div
+                  style="display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.6);text-transform:uppercase;">
+                  <span
+                    style="width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2.4s ease-in-out infinite;"></span>Currently
+                  taking new projects
+                </div>
+                <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank" rel="noopener noreferrer"
+                  style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#0A66C2;text-transform:uppercase;text-decoration:none;font-weight:600;width:fit-content;"
+                  onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+                  <span>Prefer direct chat? DM on LinkedIn</span>
+                  <span>&#8599;</span>
+                </a>
+              </div>
+            </div>
+            <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+              <div
+                style="border:1px solid rgba(var(--ink-rgb),.16);border-radius:22px;padding:clamp(26px,3vw,44px);background:var(--card);display:grid;gap:14px;">
+                <span
+                  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:rgba(var(--ink-rgb),.6);">REQUEST
+                  RECEIVED</span>
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:44px;line-height:.9;margin:0;color:var(--ink);text-transform:uppercase;">
+                  Thanks &mdash; we'll reply soon</h3>
+                <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(var(--ink-rgb),.7);">You'll hear back
+                  within two working days with questions or a scope outline.</p>
+              </div>
+            </sc-if>
+            <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ submit }}"
+                style="border:1px solid rgba(var(--ink-rgb),.16);border-radius:22px;padding:clamp(22px,2.6vw,38px);background:var(--card);display:grid;gap:18px;">
+                <div style="display:grid;gap:8px;">
+                  <label
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);">YOUR
+                    NAME</label>
+                  <input value="{{ name }}" onChange="{{ setName }}" placeholder="Jane Doe"
+                    style="font-size:15px;color:var(--ink);background:transparent;border:none;border-bottom:1px solid rgba(var(--ink-rgb),.24);padding:10px 0;outline:none;" />
+                </div>
+                <div style="display:grid;gap:8px;">
+                  <label
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);">EMAIL</label>
+                  <input value="{{ email }}" onChange="{{ setEmail }}" placeholder="you@company.com"
+                    style="font-size:15px;color:var(--ink);background:transparent;border:none;border-bottom:1px solid rgba(var(--ink-rgb),.24);padding:10px 0;outline:none;" />
+                </div>
+                <div style="display:grid;gap:10px;">
+                  <label
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);">WHAT
+                    DO YOU NEED</label>
+                  <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <sc-for list="{{ types }}" as="opt" hint-placeholder-count="4">
+                      <button type="button" onClick="{{ opt.pick }}"
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;padding:9px 15px;border-radius:999px;cursor:pointer;white-space:nowrap;flex:0 0 auto;background:{{ opt.bg }};color:{{ opt.fg }};border:1px solid rgba(var(--ink-rgb),.22);">{{
+                        opt.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <div style="display:grid;gap:8px;">
+                  <label
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);">THE
+                    IDEA</label>
+                  <textarea value="{{ brief }}" onChange="{{ setBrief }}" rows="4"
+                    placeholder="What are you building, and for whom?"
+                    style="font-size:15px;line-height:1.55;color:var(--ink);background:transparent;border:1px solid rgba(var(--ink-rgb),.2);border-radius:12px;padding:12px;outline:none;resize:vertical;"></textarea>
+                </div>
+                <div style="display:grid;gap:10px;justify-items:start;">
+                  <button type="submit"
+                    style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--surface);background:var(--ink);border:none;padding:16px 28px;border-radius:999px;cursor:pointer;transition:transform .25s ease;"
+                    style-hover="transform:translateY(-2px);">SEND REQUEST &#8594;</button>
+                  <sc-if value="{{ submitting }}" hint-placeholder-val="{{ false }}">
+                    <p
+                      style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.55);">
+                      SENDING&#8230;</p>
+                  </sc-if>
+                  <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+                    <p
+                      style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#C93E07;">
+                      {{ error }}</p>
+                  </sc-if>
+                </div>
+              </form>
+            </sc-if>
+          </div>
+        </section>
+
+        <!-- ================= FOOTER ================= -->
+        <footer
+          style="background:var(--mid);padding:clamp(26px,3vw,48px) clamp(18px,2.4vw,44px);display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+          <div
+            style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(38px,7vw,120px);line-height:.82;letter-spacing:-.02em;color:var(--card);text-transform:uppercase;">
+            JLabs</div>
+          <div
+            style="display:grid;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(255,255,255,.82);text-transform:uppercase;">
+            <a href="#start" style="color:rgba(var(--surface-rgb),.85);">Start a project &#8594;</a>
+            <a href="#engagement" style="color:rgba(var(--surface-rgb),.85);">Engagement models &#8594;</a>
+            <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank"
+              rel="noopener noreferrer"
+              style="color:rgba(var(--surface-rgb),.85);display:inline-flex;align-items:center;gap:6px;">
+              <svg style="width:14px;height:14px;flex:none;" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#0A66C2"
+                  d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                <path fill="#FFFFFF"
+                  d="M7.12 20.452H3.555V9h3.565v11.452zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm15.11 13.019h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" />
+              </svg>
+              LinkedIn Profile &#8599;
+            </a>
+            <span>Founder-led product studio</span>
+            <span>&copy; 2026 JLabs</span>
+          </div>
+        </footer>
+
+        <sc-if value="{{ galleryOpen }}" hint-placeholder-val="{{ false }}">
+          <div onClick="{{ closeGallery }}"
+            style="position:fixed;inset:0;z-index:400;background:rgba(var(--ink-rgb),.95);overflow:auto;padding:clamp(18px,3vw,44px);cursor:zoom-out;">
+            <div style="max-width:1500px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(18px,2.4vw,32px);">
+              <div
+                style="display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;position:sticky;top:0;padding-bottom:8px;">
+                <div>
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:rgba(var(--surface-rgb),.55);margin-bottom:10px;">
+                    {{ galleryKicker }}</div>
+                  <h4
+                    style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(38px,6vw,84px);line-height:.86;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
+                    {{ galleryTitle }}</h4>
+                </div>
+                <button type="button" onClick="{{ closeGallery }}"
+                  style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--ink);background:var(--surface);border:none;padding:13px 22px;border-radius:999px;cursor:pointer;">CLOSE
+                  &#10005;</button>
+              </div>
+              <div
+                style="display:flex;flex-wrap:wrap;gap:clamp(14px,1.8vw,26px);align-items:flex-start;justify-content:center;">
+                <sc-for list="{{ galleryShots }}" as="shot" hint-placeholder-count="0">
+                  <figure style="margin:0;display:flex;flex-direction:column;gap:10px;flex:0 1 auto;max-width:100%;">
+                    <div role="img" aria-label="{{ shot.label }}"
+                      style="height:{{ shot.h }};aspect-ratio:{{ shot.ar }};max-width:100%;border-radius:14px;border:1px solid rgba(var(--surface-rgb),.16);background-color:#0A0B0D;background-image:url('{{ shot.src }}');background-size:cover;background-position:top center;">
+                    </div>
+                    <figcaption
+                      style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(var(--surface-rgb),.55);text-transform:uppercase;">
+                      {{ shot.label }}</figcaption>
+                  </figure>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </x-dc>
+  <script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { name: '', email: '', type: '', brief: '', sent: false, submitting: false, error: null, shot: 0, gallery: null, designX: '0px', designProgress: 0 };
+
+  constructor(props) {
+    super(props);
+    this.capScroll = React.createRef();
+    this.projStage = React.createRef();
+  }
+
+  startDesignRail() {
+    let lastX = null;
+    const update = () => {
+      const sec = document.getElementById('design');
+      if (!sec) return;
+      const total = sec.offsetHeight - window.innerHeight;
+      const rect = sec.getBoundingClientRect();
+      const p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
+      const x = -(p * (500 / 6)).toFixed(2) + '%';
+      if (x !== lastX) { lastX = x; this.setState({ designX: x, designProgress: p }); }
+    };
+    this.designTimer = setInterval(update, 80);
+    document.addEventListener('scroll', update, { capture: true, passive: true });
+    this.onDesignScroll = update;
+    update();
+  }
+
+  equalizeWorkCards() {
+    const run = () => {
+      const cards = Array.from(document.querySelectorAll('#work article > div'));
+      if (!cards.length) return;
+      if (window.innerWidth <= 880) { cards.forEach((c) => { c.style.height = ''; }); return; }
+      cards.forEach((c) => { c.style.height = ''; });
+      const tallest = Math.max(...cards.map((c) => c.offsetHeight));
+      cards.forEach((c) => { c.style.height = tallest + 'px'; });
+    };
+    run();
+    this.equalizeTimer = setInterval(run, 600);
+    window.addEventListener('resize', run);
+    this.onEqualize = run;
+  }
+
+  componentDidMount() {
+    this.equalizeWorkCards();
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.startMarquee();
+    this.startDesignRail();
+    this.fitStack();
+    this.onResize = () => this.fitStack();
+    window.addEventListener('resize', this.onResize);
+    if (!this.reduced) this.shotTimer = setInterval(() => this.setState((s) => ({ shot: s.shot + 1 })), 2000);
+    setTimeout(() => this.setupMotion(), 120);
+  }
+
+  slideProjects() {
+    const stage = this.projStage.current;
+    if (!stage) return;
+    const cards = stage.querySelectorAll('[data-pcard]');
+    const n = cards.length;
+    if (!n) return;
+    const arts = stage.children;
+    const step = window.innerHeight;
+    const st = stage.getBoundingClientRect().top;
+    const g = Math.min(n - 1, Math.max(0, -st / step));
+    if (!this.slideX) this.slideX = [];
+    if (!this.slideY) this.slideY = [];
+    cards.forEach((c, i) => {
+      const d = i - g;
+      const t = Math.min(1, Math.abs(d));
+      const eased = t * t * (3 - 2 * t);
+      const targetX = Math.sign(d) * eased * 104;
+      const prev = this.slideX[i];
+      const x = prev === undefined ? targetX : prev + (targetX - prev) * 0.25;
+      this.slideX[i] = Math.abs(targetX - x) < 0.02 ? targetX : x;
+      this.slideY[i] = 0;
+      c.style.transform = 'translate3d(' + this.slideX[i].toFixed(2) + '%, ' + this.slideY[i] + 'px, 0) scale(' + (1 - eased * 0.04).toFixed(3) + ')';
+      c.style.opacity = (1 - eased * 0.3).toFixed(3);
+      c.style.zIndex = String(60 - Math.round(eased * 20));
+      c.style.pointerEvents = t > 0.5 ? 'none' : 'auto';
+    });
+  }
+
+  componentDidUpdate() {
+    if (this.motionReady) this.slideProjects();
+  }
+
+  setupMotion() {
+    if (this.reduced || this.motionReady) return;
+    this.motionReady = true;
+
+        const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const p = h > 0 ? Math.min(1, Math.max(0, window.scrollY / h)) : 0;
+      const bar = document.getElementById('v2-progress');
+      if (bar) bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      if (this.revealPass) this.revealPass();
+      this.slideProjects();
+    };
+    this.onMotionScroll = onScroll;
+    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
+    this.motionTimer = setInterval(onScroll, 120);
+    const tick = () => { this.slideProjects(); this.slideRaf = requestAnimationFrame(tick); };
+    this.slideRaf = requestAnimationFrame(tick);
+    onScroll();
+
+    const sel = '#capabilities article, #capabilities h2, #work h3, #process article, #process h2, #engagement h2, #engagement > div > div, #about h2, #about p, #start h2, #start form';
+    const seen = new Set();
+    const targets = [];
+    document.querySelectorAll(sel).forEach((el) => {
+      if (el.closest('#design') || seen.has(el)) return;
+      if (el.closest('[aria-hidden="true"]') || el.getAttribute('aria-hidden') === 'true') return;
+      let p = el.parentElement;
+      while (p) { if (seen.has(p)) return; p = p.parentElement; }
+      seen.add(el);
+      targets.push(el);
+    });
+
+    targets.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1), box-shadow .35s ease';
+      el.style.willChange = 'opacity, transform';
+    });
+
+    const show = (el) => {
+      if (el.dataset.revealed) return;
+      el.dataset.revealed = '1';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    };
+    let pending = targets.slice();
+    const pass = () => {
+      if (!pending.length) return;
+      const limit = window.innerHeight * 0.92;
+      let n = 0;
+      pending = pending.filter((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < limit && r.bottom > -200) {
+          const d = n++ * 80;
+          if (d) setTimeout(() => show(el), d); else show(el);
+          return false;
+        }
+        return true;
+      });
+    };
+    this.revealPass = pass;
+    pass();
+    this.revealTimer = setInterval(pass, 140);
+    // safety net: never leave content invisible
+    setTimeout(() => { targets.forEach(show); pending = []; }, 4000);
+
+    document.querySelectorAll('#capabilities article, #process article').forEach((card) => {
+      const over = () => {
+        card.style.transform = 'translateY(-8px)';
+        card.style.boxShadow = '0 24px 60px -28px rgba(var(--ink-rgb),.45)';
+      };
+      const out = () => {
+        card.style.transform = 'translateY(0)';
+        card.style.boxShadow = 'none';
+      };
+      card.addEventListener('mouseenter', over);
+      card.addEventListener('mouseleave', out);
+      (this.listeners = this.listeners || []).push([card, 'mouseenter', over], [card, 'mouseleave', out]);
+    });
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    clearInterval(this.shotTimer);
+    cancelAnimationFrame(this.slideRaf);
+    clearInterval(this.equalizeTimer);
+    window.removeEventListener('resize', this.onEqualize);
+    clearInterval(this.designTimer);
+    document.removeEventListener('scroll', this.onDesignScroll, { capture: true });
+    if (this.onMotionScroll) document.removeEventListener('scroll', this.onMotionScroll, { capture: true });
+    clearInterval(this.motionTimer);
+    clearInterval(this.revealTimer);
+    cancelAnimationFrame(this.raf);
+    (this.listeners || []).forEach(([el, ev, fn]) => el.removeEventListener(ev, fn));
+  }
+
+  fitStack() {
+    Array.from(document.querySelectorAll('#work article[id]')).forEach((el) => {
+      el.style.top = '';
+      el.style.minHeight = '0px';
+      const h = el.offsetHeight;
+      const vh = window.innerHeight;
+      el.style.top = h > vh ? Math.round(vh - h) + 'px' : '0px';
+      el.style.minHeight = Math.max(h, vh) + 'px';
+    });
+  }
+
+  startMarquee() {
+    const el = this.capScroll && this.capScroll.current;
+    if (!el || this.reduced) return;
+    if (!el.dataset.looped) {
+      const originals = Array.from(el.children);
+      this.count = originals.length;
+      this.gap = parseFloat(getComputedStyle(el).columnGap || getComputedStyle(el).gap) || 0;
+      originals.forEach((c) => {
+        const clone = c.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        el.appendChild(clone);
+      });
+      el.dataset.looped = '1';
+    }
+    const half = () => {
+      const kids = Array.from(el.children);
+      const n = this.count || kids.length / 2;
+      let w = 0;
+      for (let i = 0; i < n; i++) w += kids[i].getBoundingClientRect().width + this.gap;
+      return w;
+    };
+    let paused = false;
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+    [['mouseenter', pause], ['mouseleave', resume], ['focusin', pause], ['touchstart', pause], ['touchend', resume]].forEach(([ev, fn]) => el.addEventListener(ev, fn, { passive: true }));
+    this.listeners = [['mouseenter', pause], ['mouseleave', resume], ['focusin', pause], ['touchstart', pause], ['touchend', resume]].map(([ev, fn]) => [el, ev, fn]);
+    let pos = half();
+    el.scrollLeft = pos;
+    let last = performance.now();
+    const loop = (now) => {
+      const dt = Math.min(48, now - last);
+      last = now;
+      const h = half();
+      if (paused) pos = el.scrollLeft;
+      else if (h > 2) {
+        pos -= dt * 0.026;
+        if (pos <= 0) pos += h;
+        el.scrollLeft = Math.round(pos);
+      }
+      this.raf = requestAnimationFrame(loop);
+    };
+    this.raf = requestAnimationFrame(loop);
+  }
+
+  galleries() {
+    return {
+      proteinix: {
+        kicker: '01 / AI NUTRITION & FITNESS APP',
+        title: 'Proteinix',
+        h: '70vh', ar: '740/1600',
+        shots: [
+          ['images/proteinix-home.png', 'Home dashboard — bloom rings'],
+          ['images/proteinix-nutrition.png', 'AI meal logging'],
+          ['images/proteinix-weekly.png', 'Weekly overview'],
+          ['images/proteinix-analyze.png', 'AI meal analysis'],
+          ['images/proteinix-coach.png', 'AI coach']
+        ]
+      },
+      vitad: {
+        kicker: '03 / HOME VITAMIN D TESTING',
+        title: 'Vitad',
+        h: '70vh', ar: '807/1600',
+        shots: [
+          ['images/vitad-home.jpeg', 'Current status & scan entry'],
+          ['images/vitad-scan.jpeg', 'Test strip capture'],
+          ['images/vitad-history.jpeg', 'Scan history & trend']
+        ]
+      },
+      codesafe: {
+        kicker: '04 / AI CODE REVIEW',
+        title: 'CodeSafe',
+        h: '46vh', ar: '1600/900',
+        shots: [
+          ['images/codesafe-1.jpeg', 'Landing — secure your AI-generated code'],
+          ['images/codesafe-2.jpeg', 'Scan intake — folder or repo'],
+          ['images/codesafe-3.jpeg', 'Six-agent analysis pipeline'],
+          ['images/codesafe-4.jpeg', 'Security scan report']
+        ]
+      },
+      precare: {
+        kicker: '02 / AI PREGNANCY COMPANION',
+        title: 'Precare AI',
+        h: '42vh', ar: '1500/730',
+        shots: [
+          ['images/precare-upload.png', 'Upload a pregnancy report'],
+          ['images/precare-analysis.png', 'Risk level & biomarkers'],
+          ['images/precare-doctors.png', 'Nearby clinics, AI-ranked'],
+          ['images/precare-booking.png', 'Priority appointment booked']
+        ]
+      }
+    };
+  }
+
+  openGallery(key) {
+    clearInterval(this.shotTimer);
+    cancelAnimationFrame(this.slideRaf);
+    this.setState({ gallery: key });
+  }
+
+  closeGallery() {
+    this.setState({ gallery: null });
+    clearInterval(this.shotTimer);
+    cancelAnimationFrame(this.slideRaf);
+    if (!this.reduced) this.shotTimer = setInterval(() => this.setState((s) => ({ shot: s.shot + 1 })), 2000);
+  }
+
+  coverflow(prefix, n, leftX, rightX) {
+    const active = this.state.shot % n;
+    const out = {};
+    for (let i = 0; i < n; i++) {
+      const off = (i - active + n) % n;
+      let slot;
+      if (off === 0) slot = { x: '-50%', y: '-50%', s: 1, o: 1, z: 5 };
+      else if (off === 1) slot = { x: rightX, y: '-47%', s: 0.82, o: 0.55, z: 3 };
+      else if (off === n - 1) slot = { x: leftX, y: '-47%', s: 0.82, o: 0.55, z: 3 };
+      else slot = { x: '-50%', y: '-18%', s: 0.6, o: 0.26, z: 2 };
+      out[prefix + 'X' + i] = slot.x;
+      out[prefix + 'Y' + i] = slot.y;
+      out[prefix + 'S' + i] = slot.s;
+      out[prefix + 'O' + i] = slot.o;
+      out[prefix + 'Z' + i] = slot.z;
+      out[prefix + 'Dot' + i] = off === 0 ? 1 : 0.2;
+    }
+    return out;
+  }
+
+  renderVals() {
+    const g = this.galleries()[this.state.gallery];
+    const labels = ['MOBILE APP', 'FULL-STACK', 'AI FEATURE', 'MVP'];
+    return {
+      capScroll: this.capScroll,
+      projStage: this.projStage,
+      designX: this.state.designX,
+      designProgress: this.state.designProgress,
+      ...this.coverflow('p', 5, '-104%', '4%'),
+      galleryOpen: !!g,
+      galleryKicker: g ? g.kicker : '',
+      galleryTitle: g ? g.title : '',
+      galleryShots: g ? g.shots.map(([src, label]) => ({ src, label, h: g.h, ar: g.ar })) : [],
+      openProteinix: () => this.openGallery('proteinix'),
+      openPrecare: () => this.openGallery('precare'),
+      openVitad: () => this.openGallery('vitad'),
+      openCodesafe: () => this.openGallery('codesafe'),
+      ...this.coverflow('s', 4, '-108%', '8%'),
+      closeGallery: () => this.closeGallery(),
+      ...this.coverflow('c', 4, '-108%', '8%'),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submitting: this.state.submitting,
+      submitLabel: this.state.submitting ? 'SENDING…' : 'SEND REQUEST →',
+      error: this.state.error,
+      hasError: !!this.state.error,
+      name: this.state.name,
+      email: this.state.email,
+      brief: this.state.brief,
+      setName: (e) => this.setState({ name: e.target.value }),
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      setBrief: (e) => this.setState({ brief: e.target.value }),
+      submit: async (e) => {
+        e.preventDefault();
+        if (this.state.submitting) return;
+        this.setState({ submitting: true, error: null });
+        try {
+          const { error } = await SUPA.from('client_leads').insert({
+            name: this.state.name,
+            email: this.state.email,
+            project_type: this.state.type,
+            brief: this.state.brief
+          });
+          if (error) throw error;
+          this.setState({ sent: true, submitting: false });
+        } catch (err) {
+          this.setState({ submitting: false, error: 'Something went wrong. Please try again.' });
+        }
+      },
+      types: labels.map((label) => {
+        const on = this.state.type === label;
+        return {
+          label,
+          bg: on ? 'var(--ink)' : 'transparent',
+          fg: on ? 'var(--surface)' : 'var(--ink)',
+          pick: () => this.setState({ type: on ? '' : label })
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+
+</html>
