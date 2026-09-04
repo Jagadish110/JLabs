@@ -221,12 +221,217 @@
           #work article h3 {
             font-size: clamp(40px, 13vw, 72px) !important;
           }
+
+          /* Vitad phone screenshots — stack tighter */
+          #vitad [style*="justify-content:center"] {
+            flex-wrap: wrap !important;
+          }
+          #vitad [style*="justify-content:center"] > div {
+            max-width: 45% !important;
+            margin-top: 0 !important;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           * {
             animation: none !important;
             transition: none !important;
+          }
+        }
+
+        /* ===== MOBILE RESPONSIVE — phones (≤ 640px) ===== */
+        @media (max-width: 640px) {
+          /* --- Hero: stack vertically --- */
+          [data-screen-label="Hero"] {
+            flex-direction: column !important;
+            min-height: auto !important;
+          }
+          [data-screen-label="Hero"] > div:first-child {
+            padding-right: clamp(20px,4vw,38px) !important;
+            min-height: 70vh !important;
+            padding-bottom: 120px !important;
+          }
+          /* Hero founder image — reposition for mobile */
+          [data-screen-label="Hero"] > div:first-child > div[style*="position:absolute;left:50%"] {
+            width: 55% !important;
+            left: auto !important;
+            right: -4% !important;
+            transform: none !important;
+            top: auto !important;
+            bottom: 0 !important;
+            height: 60% !important;
+          }
+          /* Right white card: make it flow normally instead of absolute */
+          [data-screen-label="Hero"] > div:last-child {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: clamp(18px,4vw,28px) !important;
+          }
+
+          /* --- Nav links in hero card: allow wrapping --- */
+          [data-screen-label="Hero"] > div:last-child > div:first-child {
+            justify-content: flex-start !important;
+            gap: 12px 16px !important;
+          }
+
+          /* --- What We Build section cards: tighter --- */
+          #capabilities h2 {
+            font-size: clamp(38px, 12vw, 72px) !important;
+          }
+
+          /* --- Work section project cards: fix min-width --- */
+          #work [data-pcard] {
+            grid-template-columns: 1fr !important;
+            padding: clamp(14px,3vw,28px) !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow-y: auto !important;
+          }
+          /* Work section articles: allow scrolling */
+          #work article[id] {
+            height: auto !important;
+            min-height: 100svh !important;
+            overflow: visible !important;
+          }
+
+          /* --- Process grid: single column on mobile --- */
+          #process > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* --- About section: stack photo below text --- */
+          #about > div {
+            grid-template-columns: 1fr !important;
+          }
+          #about > div > div:last-child {
+            order: -1;
+          }
+          #about > div > div:last-child > div:first-child {
+            max-width: 200px !important;
+            margin: 0 auto;
+          }
+          #about h2 {
+            font-size: clamp(36px, 10vw, 72px) !important;
+          }
+
+          /* --- Engagement models: single column --- */
+          #engagement > div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+          #engagement h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Start / Contact section --- */
+          #start > div {
+            grid-template-columns: 1fr !important;
+          }
+          #start h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Footer --- */
+          footer {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+
+          /* --- General section heading sizes --- */
+          #work h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+          #process h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Coverflow phone mockups: scale down --- */
+          #proteinix [style*="aspect-ratio:740/1600"],
+          #proteinix [style*="aspect-ratio:740/1600"] {
+            border-radius: clamp(10px,3vw,20px) !important;
+          }
+          
+          /* --- Gallery lightbox: tighter padding on mobile --- */
+          [style*="z-index:400"] {
+            padding: 12px !important;
+          }
+          [style*="z-index:400"] figure {
+            flex: 1 1 100% !important;
+          }
+        }
+
+        /* ===== TABLET RESPONSIVE — (641px – 880px) ===== */
+        @media (min-width: 641px) and (max-width: 880px) {
+          /* Hero: stack but give more room */
+          [data-screen-label="Hero"] {
+            flex-direction: column !important;
+            min-height: auto !important;
+          }
+          [data-screen-label="Hero"] > div:first-child {
+            padding-right: clamp(20px,4vw,48px) !important;
+            min-height: 60vh !important;
+            padding-bottom: 80px !important;
+          }
+          [data-screen-label="Hero"] > div:first-child > div[style*="position:absolute;left:50%"] {
+            width: 40% !important;
+            left: auto !important;
+            right: 2% !important;
+            transform: none !important;
+            top: auto !important;
+            bottom: 0 !important;
+            height: 65% !important;
+          }
+          [data-screen-label="Hero"] > div:last-child {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            border-radius: 0 0 clamp(20px,2.2vw,34px) clamp(20px,2.2vw,34px) !important;
+            box-shadow: none !important;
+          }
+
+          /* Process: 2 columns */
+          #process > div:last-child {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+
+          /* About: stack */
+          #about > div {
+            grid-template-columns: 1fr !important;
+          }
+          #about > div > div:last-child {
+            order: -1;
+          }
+          #about > div > div:last-child > div:first-child {
+            max-width: 240px !important;
+            margin: 0 auto;
+          }
+
+          /* Work cards: single col layout */
+          #work [data-pcard] {
+            grid-template-columns: 1fr !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow-y: auto !important;
+          }
+          #work article[id] {
+            height: auto !important;
+            min-height: 100svh !important;
+          }
+        }
+
+        /* ===== SMALL-MEDIUM — (max-width: 1024px) ===== */
+        @media (max-width: 1024px) {
+          /* Process grid: 3 columns on medium screens */
+          #process > div:last-child {
+            grid-template-columns: repeat(3, 1fr);
           }
         }
       </style>
