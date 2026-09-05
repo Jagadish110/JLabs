@@ -221,12 +221,238 @@
           #work article h3 {
             font-size: clamp(40px, 13vw, 72px) !important;
           }
+
+          /* Vitad phone screenshots — stack tighter */
+          #vitad [style*="justify-content:center"] {
+            flex-wrap: wrap !important;
+          }
+
+          #vitad [style*="justify-content:center"]>div {
+            max-width: 45% !important;
+            margin-top: 0 !important;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
           * {
             animation: none !important;
             transition: none !important;
+          }
+        }
+
+        /* ===== MOBILE RESPONSIVE — phones (≤ 640px) ===== */
+        @media (max-width: 640px) {
+
+          /* --- Hero: stack vertically --- */
+          [data-screen-label="Hero"] {
+            flex-direction: column !important;
+            min-height: auto !important;
+          }
+
+          [data-screen-label="Hero"]>div:first-child {
+            padding-right: clamp(20px, 4vw, 38px) !important;
+            min-height: 70vh !important;
+            padding-bottom: 120px !important;
+          }
+
+          /* Hero founder image — reposition for mobile */
+          [data-screen-label="Hero"]>div:first-child>div[style*="position:absolute;left:50%"] {
+            width: 55% !important;
+            left: auto !important;
+            right: -4% !important;
+            transform: none !important;
+            top: auto !important;
+            bottom: 0 !important;
+            height: 60% !important;
+          }
+
+          /* Right white card: make it flow normally instead of absolute */
+          [data-screen-label="Hero"]>div:last-child {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: clamp(18px, 4vw, 28px) !important;
+          }
+
+          /* --- Nav links in hero card: allow wrapping --- */
+          [data-screen-label="Hero"]>div:last-child>div:first-child {
+            justify-content: flex-start !important;
+            gap: 12px 16px !important;
+          }
+
+          /* --- What We Build section cards: tighter --- */
+          #capabilities h2 {
+            font-size: clamp(38px, 12vw, 72px) !important;
+          }
+
+          /* --- Work section project cards: fix min-width --- */
+          #work [data-pcard] {
+            grid-template-columns: 1fr !important;
+            padding: clamp(14px, 3vw, 28px) !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow-y: auto !important;
+          }
+
+          /* Work section articles: allow scrolling */
+          #work article[id] {
+            height: auto !important;
+            min-height: 100svh !important;
+            overflow: visible !important;
+          }
+
+          /* --- Process grid: single column on mobile --- */
+          #process>div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+
+          /* --- About section: stack photo below text --- */
+          #about>div {
+            grid-template-columns: 1fr !important;
+          }
+
+          #about>div>div:last-child {
+            order: -1;
+          }
+
+          #about>div>div:last-child>div:first-child {
+            max-width: 200px !important;
+            margin: 0 auto;
+          }
+
+          #about h2 {
+            font-size: clamp(36px, 10vw, 72px) !important;
+          }
+
+          /* --- Engagement models: single column --- */
+          #engagement>div:last-child {
+            grid-template-columns: 1fr !important;
+          }
+
+          #engagement h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Start / Contact section --- */
+          #start>div {
+            grid-template-columns: 1fr !important;
+          }
+
+          #start h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Footer --- */
+          footer {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+          }
+
+          /* --- General section heading sizes --- */
+          #work h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          #process h2 {
+            font-size: clamp(38px, 12vw, 100px) !important;
+          }
+
+          /* --- Coverflow phone mockups: scale down --- */
+          #proteinix [style*="aspect-ratio:740/1600"],
+          #proteinix [style*="aspect-ratio:740/1600"] {
+            border-radius: clamp(10px, 3vw, 20px) !important;
+          }
+
+          /* --- Gallery lightbox: tighter padding on mobile --- */
+          [style*="z-index:400"] {
+            padding: 12px !important;
+          }
+
+          [style*="z-index:400"] figure {
+            flex: 1 1 100% !important;
+          }
+        }
+
+        /* ===== TABLET RESPONSIVE — (641px – 880px) ===== */
+        @media (min-width: 641px) and (max-width: 880px) {
+
+          /* Hero: stack but give more room */
+          [data-screen-label="Hero"] {
+            flex-direction: column !important;
+            min-height: auto !important;
+          }
+
+          [data-screen-label="Hero"]>div:first-child {
+            padding-right: clamp(20px, 4vw, 48px) !important;
+            min-height: 60vh !important;
+            padding-bottom: 80px !important;
+          }
+
+          [data-screen-label="Hero"]>div:first-child>div[style*="position:absolute;left:50%"] {
+            width: 40% !important;
+            left: auto !important;
+            right: 2% !important;
+            transform: none !important;
+            top: auto !important;
+            bottom: 0 !important;
+            height: 65% !important;
+          }
+
+          [data-screen-label="Hero"]>div:last-child {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            width: 100% !important;
+            border-radius: 0 0 clamp(20px, 2.2vw, 34px) clamp(20px, 2.2vw, 34px) !important;
+            box-shadow: none !important;
+          }
+
+          /* Process: 2 columns */
+          #process>div:last-child {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+
+          /* About: stack */
+          #about>div {
+            grid-template-columns: 1fr !important;
+          }
+
+          #about>div>div:last-child {
+            order: -1;
+          }
+
+          #about>div>div:last-child>div:first-child {
+            max-width: 240px !important;
+            margin: 0 auto;
+          }
+
+          /* Work cards: single col layout */
+          #work [data-pcard] {
+            grid-template-columns: 1fr !important;
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            overflow-y: auto !important;
+          }
+
+          #work article[id] {
+            height: auto !important;
+            min-height: 100svh !important;
+          }
+        }
+
+        /* ===== SMALL-MEDIUM — (max-width: 1024px) ===== */
+        @media (max-width: 1024px) {
+
+          /* Process grid: 3 columns on medium screens */
+          #process>div:last-child {
+            grid-template-columns: repeat(3, 1fr);
           }
         }
       </style>
@@ -487,7 +713,9 @@
                 <h3
                   style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:34px;line-height:.95;letter-spacing:-.01em;margin:0 0 12px;color:var(--ink);text-transform:uppercase;">
                   Waitlist &amp; validation</h3>
-                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">We don't build blindly. Mid-development, we launch live waitlist and validation pages early to capture real demand before day one.</p>
+                <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(var(--ink-rgb),.68);">We don't build
+                  blindly. Mid-development, we launch live waitlist and validation pages early to capture real demand
+                  before day one.</p>
               </div>
             </article>
           </div>
@@ -1092,7 +1320,9 @@
               <h3
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(20px,1.7vw,26px);line-height:1.02;margin:0;color:var(--card);text-transform:uppercase;">
                 Build &amp; Validate</h3>
-              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">We don't build blindly. Mid-development, we deploy live waitlists before full completion to capture real demand &mdash; alongside working builds you can hold.</p>
+              <p style="margin:0;font-size:13px;line-height:1.55;color:rgba(255,255,255,.9);">We don't build blindly.
+                Mid-development, we deploy live waitlists before full completion to capture real demand &mdash;
+                alongside working builds you can hold.</p>
             </div>
             <div
               style="background:var(--ink);padding:26px 18px;display:grid;gap:10px;align-content:start;transition:background .3s ease;"
@@ -1191,8 +1421,10 @@
         </section>
 
         <!-- ================= ENGAGEMENT MODELS ================= -->
-        <section id="engagement" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
-          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(26px,3vw,48px);">
+        <section id="engagement"
+          style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
+          <div
+            style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(26px,3vw,48px);">
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
@@ -1208,88 +1440,122 @@
 
           <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(16px,2vw,24px);">
             <!-- Model 1: MVP Sprint -->
-            <div style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
+            <div
+              style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
               <div>
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">01</span>
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#C93E07;border:1px solid rgba(201,62,7,.3);padding:6px 12px;border-radius:999px;font-weight:600;">6&ndash;8 WEEKS</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">01</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#C93E07;border:1px solid rgba(201,62,7,.3);padding:6px 12px;border-radius:999px;font-weight:600;">6&ndash;8
+                    WEEKS</span>
                 </div>
-                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
                   Fixed-Scope MVP</h3>
                 <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(var(--ink-rgb),.7);">
-                  Turn an idea into a production-grade product on the Play Store, App Store, or web. Fixed scope, fixed timeline, zero bloat.
+                  Turn an idea into a production-grade product on the Play Store, App Store, or web. Fixed scope, fixed
+                  timeline, zero bloat.
                 </p>
                 <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Architecture &amp; full UI/UX design system
+                    <span
+                      style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Architecture
+                    &amp; full UI/UX design system
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Frontend, backend, database &amp; AI integrations
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Frontend,
+                    backend, database &amp; AI integrations
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>App Store &amp; Play Store launch submission
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>App Store
+                    &amp; Play Store launch submission
                   </li>
                 </ul>
               </div>
-              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+              <a href="#start"
+                style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;"
+                onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
                 Start an MVP &#8594;
               </a>
             </div>
 
             <!-- Model 2: Pre-Launch Validation Sprint -->
-            <div style="background:var(--mid);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 24px 64px rgba(60,18,0,.22);">
+            <div
+              style="background:var(--mid);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 24px 64px rgba(60,18,0,.22);">
               <div>
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);background:var(--surface);padding:6px 12px;border-radius:999px;">02</span>
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#fff;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;font-weight:600;">1&ndash;2 WEEKS</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);background:var(--surface);padding:6px 12px;border-radius:999px;">02</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#fff;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;font-weight:600;">1&ndash;2
+                    WEEKS</span>
                 </div>
-                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--card);text-transform:uppercase;margin:0 0 12px;">
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--card);text-transform:uppercase;margin:0 0 12px;">
                   Waitlist &amp; Validation</h3>
                 <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.9);">
-                  Test real market demand before spending full development budgets. High-converting waitlist page, copy &amp; lead engine.
+                  Test real market demand before spending full development budgets. High-converting waitlist page, copy
+                  &amp; lead engine.
                 </p>
                 <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
-                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Interactive waitlist &amp; early access landing page
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Interactive
+                    waitlist &amp; early access landing page
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
-                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Email capture, analytics &amp; lead tracking
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Email
+                    capture, analytics &amp; lead tracking
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(255,255,255,.9);">
-                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Fast deployment ready for investor pitches
+                    <span style="width:5px;height:5px;background:#fff;flex:none;border-radius:50%;"></span>Fast
+                    deployment ready for investor pitches
                   </li>
                 </ul>
               </div>
-              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+              <a href="#start"
+                style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--surface);color:var(--ink);text-decoration:none;text-transform:uppercase;transition:opacity .2s;"
+                onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
                 Launch a Waitlist &#8594;
               </a>
             </div>
 
             <!-- Model 3: Product Retainer -->
-            <div style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
+            <div
+              style="background:var(--card);border:1px solid rgba(var(--ink-rgb),.1);border-radius:24px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:24px;">
               <div>
                 <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">03</span>
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);border:1px solid rgba(var(--ink-rgb),.2);padding:6px 12px;border-radius:999px;font-weight:600;">MONTHLY SPRINT</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--surface);background:var(--ink);padding:6px 12px;border-radius:999px;">03</span>
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:rgba(var(--ink-rgb),.6);border:1px solid rgba(var(--ink-rgb),.2);padding:6px 12px;border-radius:999px;font-weight:600;">MONTHLY
+                    SPRINT</span>
                 </div>
-                <h3 style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
+                <h3
+                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(28px,2.6vw,36px);line-height:.95;color:var(--ink);text-transform:uppercase;margin:0 0 12px;">
                   Dedicated Partner</h3>
                 <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:rgba(var(--ink-rgb),.7);">
-                  For funded startups &amp; growing teams needing a reliable product squad holding design, engineering, and AI feature releases.
+                  For funded startups &amp; growing teams needing a reliable product squad holding design, engineering,
+                  and AI feature releases.
                 </p>
                 <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px;">
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Continuous feature delivery &amp; weekly shipping
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Continuous
+                    feature delivery &amp; weekly shipping
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Direct Slack / async communication with founder
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Direct
+                    Slack / async communication with founder
                   </li>
                   <li style="display:flex;gap:10px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Pause or cancel anytime as priorities shift
+                    <span style="width:5px;height:5px;background:#F2661C;flex:none;border-radius:50%;"></span>Pause or
+                    cancel anytime as priorities shift
                   </li>
                 </ul>
               </div>
-              <a href="#start" style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+              <a href="#start"
+                style="display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--surface);text-decoration:none;text-transform:uppercase;transition:opacity .2s;"
+                onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
                 Hire as Partner &#8594;
               </a>
             </div>
@@ -1297,7 +1563,8 @@
         </section>
 
         <!-- ================= START ================= -->
-        <section id="start" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
+        <section id="start"
+          style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);border-top:1px solid rgba(var(--ink-rgb),.08);">
           <div
             style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(30px,4vw,60px);align-items:start;">
             <div>
@@ -1318,7 +1585,8 @@
                     style="width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2.4s ease-in-out infinite;"></span>Currently
                   taking new projects
                 </div>
-                <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank" rel="noopener noreferrer"
+                <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank"
+                  rel="noopener noreferrer"
                   style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#0A66C2;text-transform:uppercase;text-decoration:none;font-weight:600;width:fit-content;"
                   onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
                   <span>Prefer direct chat? DM on LinkedIn</span>
