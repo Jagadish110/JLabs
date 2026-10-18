@@ -9,3 +9,6 @@
 # Local cache & temp files
 .image-slots.state.json
 .thumbnail
+
+# Claude Code
+.claude/

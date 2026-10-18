@@ -271,17 +271,6 @@
           #work article h3 {
             font-size: clamp(36px, 9vw, 64px) !important;
           }
-
-          /* Vitad phone screenshots — wrap tighter */
-          #vitad [style*="justify-content:center"] {
-            flex-wrap: wrap !important;
-          }
-
-          #vitad [style*="justify-content:center"]>div {
-            max-width: 45% !important;
-            margin-top: 0 !important;
-          }
-
           /* Work project tabs — stack nicely */
           #work>div:nth-child(2) {
             flex-wrap: wrap !important;
@@ -385,13 +374,6 @@
           #work article[id] {
             height: auto !important;
             min-height: auto !important;
-          }
-
-          /* Precare / CodeSafe image grid: 2 cols on tablet is fine */
-          #precare [style*="display:grid;grid-template-columns:1fr 1fr"],
-          #codesafe [style*="display:grid;grid-template-columns:1fr 1fr"] {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 10px !important;
           }
         }
 
@@ -582,37 +564,6 @@
           #work article h3 {
             font-size: clamp(36px, 11vw, 56px) !important;
           }
-
-          /* Proteinix phone mockups: compact layout */
-          #proteinix [style*="display:flex;width:100%;gap"] {
-            justify-content: center !important;
-            gap: 8px !important;
-          }
-
-          #proteinix [style*="display:flex;width:100%;gap"]>div {
-            max-width: 30% !important;
-            margin-top: 0 !important;
-          }
-
-          /* Precare 2x2 grid → 1x2 single column */
-          #precare [style*="display:grid;grid-template-columns:1fr 1fr"],
-          #codesafe [style*="display:grid;grid-template-columns:1fr 1fr"] {
-            grid-template-columns: 1fr !important;
-            gap: 10px !important;
-          }
-
-          /* Vitad phone mockups */
-          #vitad [style*="display:flex;width:100%;gap"] {
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-            gap: 8px !important;
-          }
-
-          #vitad [style*="display:flex;width:100%;gap"]>div {
-            max-width: 42% !important;
-            margin-top: 0 !important;
-          }
-
           /* ── AI Engineering ───────────────────────────────────── */
           #ai-engineering {
             padding: var(--sec-py) var(--sec-px) !important;
@@ -1023,24 +974,6 @@
             min-width: 0 !important;
             max-width: 100% !important;
           }
-
-          /* Phone mockups: never let them force horizontal overflow. */
-          #proteinix [style*="display:flex;width:100%;gap"],
-          #vitad [style*="display:flex;width:100%;gap"] {
-            justify-content: center !important;
-            flex-wrap: wrap !important;
-          }
-
-          #proteinix [style*="display:flex;width:100%;gap"]>div,
-          #vitad [style*="display:flex;width:100%;gap"]>div {
-            max-width: 180px !important;
-          }
-
-          #precare [style*="display:grid;grid-template-columns:1fr 1fr"],
-          #codesafe [style*="display:grid;grid-template-columns:1fr 1fr"] {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-          }
-
           #ai-engineering>div>div[style*="display:grid"],
           #ai-engineering [style*="grid-template-columns:repeat(3"] {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -1389,48 +1322,12 @@
 
           /* Project visual areas: contain instead of cropping. */
           #proteinix img,
+          #distaura img,
           #precare img,
           #vitad img,
           #codesafe img {
             max-width: 100% !important;
           }
-
-          #proteinix [style*="display:flex;width:100%;gap"],
-          #vitad [style*="display:flex;width:100%;gap"] {
-            width: 100% !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: flex-end !important;
-            flex-wrap: nowrap !important;
-            gap: 6px !important;
-            overflow: hidden !important;
-          }
-
-          #proteinix [style*="display:flex;width:100%;gap"]>div {
-            flex: 1 1 0 !important;
-            max-width: 31% !important;
-            min-width: 0 !important;
-            margin-top: 0 !important;
-          }
-
-          #vitad [style*="display:flex;width:100%;gap"] {
-            flex-wrap: wrap !important;
-          }
-
-          #vitad [style*="display:flex;width:100%;gap"]>div {
-            flex: 0 1 42% !important;
-            max-width: 42% !important;
-            min-width: 0 !important;
-            margin-top: 0 !important;
-          }
-
-          #precare [style*="display:grid;grid-template-columns:1fr 1fr"],
-          #codesafe [style*="display:grid;grid-template-columns:1fr 1fr"] {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            gap: 10px !important;
-          }
-
           /* ---------- AI ENGINEERING ---------- */
           #ai-engineering {
             padding: 42px var(--sec-px) !important;
@@ -1717,6 +1614,87 @@
             scroll-behavior: auto !important;
           }
         }
+      
+        /* ---------- Project covers: hover + focus (inline handlers do not bind here) ---------- */
+        [data-cover] {
+          transition: transform .45s cubic-bezier(.16, 1, .3, 1), box-shadow .45s ease;
+        }
+
+        [data-cover]:hover {
+          transform: translateY(-7px);
+        }
+
+        [data-cover="distaura"]:hover {
+          box-shadow: 0 38px 82px rgba(60, 18, 0, .28) !important;
+        }
+
+        [data-cover="precare"]:hover {
+          box-shadow: 0 38px 82px rgba(60, 18, 0, .28) !important;
+        }
+
+        [data-cover="vitad"]:hover {
+          box-shadow: 0 46px 96px rgba(var(--ink-rgb), .32) !important;
+        }
+
+        [data-cover="codesafe"]:hover {
+          box-shadow: 0 46px 96px rgba(var(--ink-rgb), .38) !important;
+        }
+
+        [data-cover]:focus-visible,
+        [data-gallery-pill]:focus-visible {
+          outline: 2px solid var(--ink);
+          outline-offset: 4px;
+        }
+
+        /* the chrome strapline has no room on narrow cards */
+        @media (max-width: 900px) {
+
+          [data-chrome-note] {
+            display: none !important;
+          }
+        }
+
+        [data-gallery-pill]:hover {
+          border-color: rgba(var(--ink-rgb), .5) !important;
+          color: var(--ink) !important;
+        }
+
+        /* ---------- CTA + link hovers (inline handlers do not bind here) ---------- */
+        [data-link-fade="75"]:hover {
+          opacity: .75;
+        }
+
+        [data-link-fade="80"]:hover {
+          opacity: .8;
+        }
+
+        [data-nav-arrow]:hover {
+          background: var(--ink) !important;
+          color: #fff !important;
+        }
+
+        [data-cta="waitlist"]:hover {
+          background: #F2661C !important;
+        }
+
+        [data-cta="case-study"]:hover {
+          background: #F2661C !important;
+          transform: translateY(-1px);
+        }
+
+        [data-cta="codesafe"]:hover {
+          background: #C93E07 !important;
+          transform: translateY(-2px);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+          [data-cover],
+          [data-cover]:hover {
+            transition: none;
+            transform: none;
+          }
+        }
       </style>
 
     </helmet>
@@ -1868,7 +1846,7 @@
                 <a href="https://www.studbridge.com/" target="_blank" rel="noopener noreferrer"
                   title="StudBridge | Mentorship, Career Guidance &amp; Industry-Led Courses"
                   style="display:inline-flex;align-items:center;gap:4px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:#C93E07;text-decoration:none;margin-top:4px;font-weight:600;width:fit-content;transition:opacity .2s ease;"
-                  onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+                  data-link-fade="75">
                   studbridge.com &#8599;
                 </a>
               </div>
@@ -2101,8 +2079,7 @@
             style="padding:0 var(--work-head-px) clamp(16px,2vw,28px);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
             <button type="button" onClick="{{ prevProject }}"
               style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(var(--ink-rgb),.22);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,transform .2s ease;flex:none;"
-              onmouseover="this.style.background='var(--ink)';this.style.color='#fff';"
-              onmouseout="this.style.background='transparent';this.style.color='var(--ink)';">
+              data-nav-arrow="1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="15 18 9 12 15 6" />
@@ -2115,21 +2092,24 @@
               </button>
               <button type="button" onClick="{{ goProject1 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg1 }};color:{{ tabFg1 }};">
-                02 Precare AI
+                02 Distaura
               </button>
               <button type="button" onClick="{{ goProject2 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg2 }};color:{{ tabFg2 }};">
-                03 Vitad
+                03 Precare AI
               </button>
               <button type="button" onClick="{{ goProject3 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg3 }};color:{{ tabFg3 }};">
-                04 CodeSafe
+                04 Vitad
+              </button>
+              <button type="button" onClick="{{ goProject4 }}"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg4 }};color:{{ tabFg4 }};">
+                05 CodeSafe
               </button>
             </div>
             <button type="button" onClick="{{ nextProject }}"
               style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(var(--ink-rgb),.22);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,transform .2s ease;flex:none;"
-              onmouseover="this.style.background='var(--ink)';this.style.color='#fff';"
-              onmouseout="this.style.background='transparent';this.style.color='var(--ink)';">
+              data-nav-arrow="1">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
                 stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -2160,7 +2140,7 @@
                       <a href="https://proteinix.vercel.app/" target="_blank" rel="noopener noreferrer"
                         title="Proteinix Waitlist"
                         style="display:inline-flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;color:#fff;background:#C93E07;padding:7px 14px;border-radius:999px;text-decoration:none;font-weight:600;white-space:nowrap;transition:background .2s ease;"
-                        onmouseover="this.style.background='#F2661C'" onmouseout="this.style.background='#C93E07'">
+                        data-cta="waitlist">
                         JOIN WAITLIST &#8599;
                       </a>
                     </div>
@@ -2207,8 +2187,7 @@
                     <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
                       <a href="https://proteinix.vercel.app/" target="_blank" rel="noopener noreferrer"
                         style="display:inline-flex;align-items:center;gap:8px;background:#C93E07;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;text-decoration:none;transition:all .2s ease;box-shadow:0 8px 24px rgba(201,62,7,.28);"
-                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
-                        onmouseout="this.style.background='#C93E07';this.style.transform='none';">
+                        data-cta="case-study">
                         <span>View Case Study</span>
                         <span>&#8599;</span>
                       </a>
@@ -2259,73 +2238,124 @@
               </article>
             </sc-if>
 
-            <!-- Project 1: Precare -->
+            <!-- Project 1: Distaura -->
             <sc-if value="{{ showProject1 }}" hint-placeholder-val="{{ false }}">
+              <article id="distaura" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                  <!-- Distaura cover — platform overview -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 10%, rgba(27,122,62,.18) 0%, rgba(242,102,28,.12) 48%, rgba(242,102,28,0) 72%);"></div>
+                    <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
+                      data-cover="distaura" aria-label="Open distaura.com in a new tab"
+                      style="position:relative;display:block;width:100%;box-sizing:border-box;overflow:hidden;cursor:pointer;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/distaura-cover.webp" alt="Distaura — the virtual distribution company for modern businesses"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </a>
+                  </div>
+                  <a href="https://www.distaura.com/products" target="_blank" rel="noopener noreferrer"
+                    data-gallery-pill="1"
+                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;text-decoration:none;">
+                    <span>Browse the live catalogue</span>
+                    <span>&#8599;</span>
+                  </a>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div
+                      style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);flex-wrap:wrap;">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">02</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">B2B
+                        SOFTWARE DISTRIBUTION &middot; INDIA</span>
+                      <span
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#1B7A3E;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
+                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>LIVE</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      Distaura</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
+                      The virtual distribution company for modern businesses</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      A two-sided platform that connects software and service suppliers with Indian businesses.
+                      Suppliers reach the market without building a local sales team; businesses get vetted solutions
+                      matched to their problem, priced in rupees and invoiced GST-compliant under one vendor of
+                      record.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MARKETPLACE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">NEXT.JS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">B2B
+                        COMMERCE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">PRODUCT</span>
+                    </div>
+                    <ul style="list-style:none;padding:0;margin:0 0 min(18px,2.1vh);display:grid;gap:7px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Supplier
+                        onboarding &mdash; register, get verified, list services and availability
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Filterable
+                        catalogue by category, city and billing model
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Procurement
+                        desk for vendor agreements, PO invoicing and multi-seat quotes
+                      </li>
+                    </ul>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
+                      <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
+                        style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;text-decoration:none;font-weight:600;transition:transform .3s ease, background .3s ease;"
+                        data-cta="codesafe">VISIT DISTAURA.COM <span style="font-size:13px;">&#8599;</span></a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+
+            <!-- Project 2: Precare -->
+            <sc-if value="{{ showProject2 }}" hint-placeholder-val="{{ false }}">
               <article id="precare" style="">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                  <div style="display:flex;flex-direction:column;gap:16px;width:100%;justify-content:center;">
-                    <!-- Precare screenshot grid -->
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                      <div onClick="{{ openPrecare }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-upload.png" alt="PreCare report upload"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-analysis.png" alt="PreCare risk analysis"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-doctors.png" alt="PreCare nearby clinics"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-booking.png" alt="PreCare appointment booking"
-                          style="width:100%;display:block;" />
-                      </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                  <!-- Precare AI cover — app showcase -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 576);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.18) 0%, rgba(200,120,230,.12) 45%, rgba(242,102,28,0) 70%);"></div>
+                    <div data-cover="precare" onClick="{{ openPrecare }}" role="button" tabindex="0"
+                      aria-label="Open the Precare AI screen gallery"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/precare-cover.jpeg" alt="PreCare AI — Smarter Care for a Healthier Tomorrow"
+                        style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
+                  <button type="button" data-gallery-pill="1" onClick="{{ openPrecare }}"
+                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
+                    <span>View all 5 screens</span>
+                    <span>&#8599;</span>
+                  </button>
+                </div>
                   <div
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
                     <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
                       <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">02</span>
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">03</span>
                       <span
                         style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
                         PREGNANCY COMPANION &middot; WEB APP</span>
@@ -2354,8 +2384,7 @@
                     <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
                       <button type="button" onClick="{{ openPrecare }}"
                         style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
-                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
-                        onmouseout="this.style.background='#1A1108';this.style.transform='none';">
+                        data-cta="case-study">
                         <span>View Case Study</span>
                         <span>&#8599;</span>
                       </button>
@@ -2365,8 +2394,8 @@
               </article>
             </sc-if>
 
-            <!-- Project 2: Vitad -->
-            <sc-if value="{{ showProject2 }}" hint-placeholder-val="{{ false }}">
+            <!-- Project 3: Vitad -->
+            <sc-if value="{{ showProject3 }}" hint-placeholder-val="{{ false }}">
               <article id="vitad" style="">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
@@ -2374,7 +2403,7 @@
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
                     <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
                       <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">03</span>
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">04</span>
                       <span
                         style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">HOME
                         VITAMIN D TESTING</span>
@@ -2400,102 +2429,62 @@
                     <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
                       <button type="button" onClick="{{ openVitad }}"
                         style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
-                        onmouseover="this.style.background='#F2661C';this.style.transform='translateY(-1px)';"
-                        onmouseout="this.style.background='#1A1108';this.style.transform='none';">
+                        data-cta="case-study">
                         <span>View Case Study</span>
                         <span>&#8599;</span>
                       </button>
                     </div>
                   </div>
-                  <div
-                    style="display:flex;width:100%;gap:clamp(8px,1.2vw,16px);justify-content:center;align-items:flex-start;min-width:0;">
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
-                      <img src="images/vitad-scan.jpeg" alt="Vitad scan test strip screen"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
-                    </div>
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(58svh * 807 / 1600, 34%);aspect-ratio:807/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.2);">
-                      <img src="images/vitad-home.jpeg" alt="Vitad home dashboard"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
-                    </div>
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
-                      <img src="images/vitad-history.jpeg" alt="Vitad scan history"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                  <!-- Vitad cover — app showcase -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 682);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.22) 0%, rgba(255,175,90,.14) 45%, rgba(242,102,28,0) 70%);"></div>
+                    <div data-cover="vitad" onClick="{{ openVitad }}" role="button" tabindex="0"
+                      aria-label="Open the Vitad screen gallery"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/vitad-hero.jpeg" alt="VitaD — Vitamin D, made visible app showcase"
+                        style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
+                  <button type="button" data-gallery-pill="1" onClick="{{ openVitad }}"
+                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
+                    <span>View all 3 screens</span>
+                    <span>&#8599;</span>
+                  </button>
+                </div>
                 </div>
               </article>
             </sc-if>
 
-            <!-- Project 3: CodeSafe -->
-            <sc-if value="{{ showProject3 }}" hint-placeholder-val="{{ false }}">
+            <!-- Project 4: CodeSafe -->
+            <sc-if value="{{ showProject4 }}" hint-placeholder-val="{{ false }}">
               <article id="codesafe" style="">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                  <div style="display:flex;flex-direction:column;gap:16px;width:100%;justify-content:center;">
-                    <!-- CodeSafe screenshot grid -->
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                      <div onClick="{{ openCodesafe }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
-                        </div>
-                        <img src="images/codesafe-1.jpeg" alt="CodeSafe landing page"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openCodesafe }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
-                        </div>
-                        <img src="images/codesafe-2.jpeg" alt="Security scan intake"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openCodesafe }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
-                        </div>
-                        <img src="images/codesafe-3.jpeg" alt="Security analysis pipeline"
-                          style="width:100%;display:block;" />
-                      </div>
-                      <div onClick="{{ openCodesafe }}"
-                        style="cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.1);border-radius:12px;overflow:hidden;box-shadow:0 8px 28px rgba(var(--ink-rgb),.12);">
-                        <div
-                          style="display:flex;align-items:center;gap:5px;padding:7px 10px;border-bottom:1px solid rgba(var(--ink-rgb),.08);background:#f8f8f8;">
-                          <span style="width:6px;height:6px;border-radius:50%;background:#f87171;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#fbbf24;"></span>
-                          <span style="width:6px;height:6px;border-radius:50%;background:#4ade80;"></span>
-                          <span
-                            style="margin-left:6px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:rgba(var(--ink-rgb),.4);">codesafe.dev</span>
-                        </div>
-                        <img src="images/codesafe-4.jpeg" alt="Security scan report"
-                          style="width:100%;display:block;" />
-                      </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                                    <!-- CodeSafe cover — product overview -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
+                    <div data-cover="codesafe" onClick="{{ openCodesafe }}" role="button" tabindex="0"
+                      aria-label="Open the CodeSafe screen gallery"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/codesafe-cover.webp" alt="CodeSafe — find security vulnerabilities before they reach production"
+                        style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
+                  <button type="button" data-gallery-pill="1" onClick="{{ openCodesafe }}"
+                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
+                    <span>View all 4 screens</span>
+                    <span>&#8599;</span>
+                  </button>
+                </div>
                   <div
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
                     <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
                       <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">04</span>
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">05</span>
                       <span
                         style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
                         SECURITY ANALYSIS</span>
@@ -2522,7 +2511,7 @@
                     </div>
                     <a href="https://codesafe.co.in/" target="_blank" rel="noopener"
                       style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
-                      style-hover="background:#C93E07;transform:translateY(-2px);">VISIT CODESAFE.CO.IN <span
+                      data-cta="codesafe">VISIT CODESAFE.CO.IN <span
                         style="font-size:13px;">&#8599;</span></a>
                   </div>
                 </div>
@@ -3130,7 +3119,7 @@
                 <a href="https://www.linkedin.com/in/n-jagadishwar-reddy-867827326" target="_blank"
                   rel="noopener noreferrer"
                   style="display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:#0A66C2;text-transform:uppercase;text-decoration:none;font-weight:600;width:fit-content;"
-                  onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+                  data-link-fade="80">
                   <span>Prefer direct chat? DM on LinkedIn</span>
                   <span>&#8599;</span>
                 </a>
@@ -3413,7 +3402,7 @@ class Component extends DCLogic {
 
   setupSwipe() {
     // Add touch swipe to coverflow containers for mobile
-    const coverflows = document.querySelectorAll('#proteinix, #precare, #codesafe');
+    const coverflows = document.querySelectorAll('#proteinix');
     coverflows.forEach((article) => {
       const container = article.querySelector('[style*="overflow:hidden"]');
       if (!container) return;
@@ -3545,7 +3534,7 @@ class Component extends DCLogic {
         ]
       },
       vitad: {
-        kicker: '03 / HOME VITAMIN D TESTING',
+        kicker: '04 / HOME VITAMIN D TESTING',
         title: 'Vitad',
         h: '70vh', ar: '807/1600',
         shots: [
@@ -3555,7 +3544,7 @@ class Component extends DCLogic {
         ]
       },
       codesafe: {
-        kicker: '04 / AI SECURITY ANALYSIS',
+        kicker: '05 / AI SECURITY ANALYSIS',
         title: 'CodeSafe',
         h: '46vh', ar: '1600/900',
         shots: [
@@ -3566,10 +3555,11 @@ class Component extends DCLogic {
         ]
       },
       precare: {
-        kicker: '02 / AI PREGNANCY COMPANION',
+        kicker: '03 / AI PREGNANCY COMPANION',
         title: 'Precare AI',
         h: '42vh', ar: '1500/730',
         shots: [
+          ['images/precare-hero.png', 'Landing — read your report in plain language'],
           ['images/precare-upload.png', 'Upload a pregnancy report'],
           ['images/precare-analysis.png', 'Risk level & biomarkers'],
           ['images/precare-doctors.png', 'Nearby clinics, AI-ranked'],
@@ -3618,7 +3608,7 @@ class Component extends DCLogic {
     const g = this.galleries()[this.state.gallery];
     const labels = ['AI AGENT', 'RAG / KNOWLEDGE', 'AI SAAS', 'MOBILE APP', 'WEB APP', 'AI INTEGRATION', 'OTHER'];
     const ap = this.state.activeProject;
-    const N_PROJECTS = 4;
+    const N_PROJECTS = 5;
     const tabActive = (i) => ({
       tabBg: ap === i ? 'var(--ink)' : 'transparent',
       tabFg: ap === i ? 'var(--surface)' : 'rgba(var(--ink-rgb),.7)'
@@ -3633,16 +3623,19 @@ class Component extends DCLogic {
       showProject1: ap === 1,
       showProject2: ap === 2,
       showProject3: ap === 3,
+      showProject4: ap === 4,
       tabBg0: tabActive(0).tabBg, tabFg0: tabActive(0).tabFg,
       tabBg1: tabActive(1).tabBg, tabFg1: tabActive(1).tabFg,
       tabBg2: tabActive(2).tabBg, tabFg2: tabActive(2).tabFg,
       tabBg3: tabActive(3).tabBg, tabFg3: tabActive(3).tabFg,
+      tabBg4: tabActive(4).tabBg, tabFg4: tabActive(4).tabFg,
       prevProject: () => this.setState((s) => ({ activeProject: (s.activeProject - 1 + N_PROJECTS) % N_PROJECTS })),
       nextProject: () => this.setState((s) => ({ activeProject: (s.activeProject + 1) % N_PROJECTS })),
       goProject0: () => this.setState({ activeProject: 0 }),
       goProject1: () => this.setState({ activeProject: 1 }),
       goProject2: () => this.setState({ activeProject: 2 }),
       goProject3: () => this.setState({ activeProject: 3 }),
+      goProject4: () => this.setState({ activeProject: 4 }),
       ...this.coverflow('p', 5, '-104%', '4%'),
       galleryOpen: !!g,
       galleryKicker: g ? g.kicker : '',
@@ -3652,9 +3645,7 @@ class Component extends DCLogic {
       openPrecare: () => this.openGallery('precare'),
       openVitad: () => this.openGallery('vitad'),
       openCodesafe: () => this.openGallery('codesafe'),
-      ...this.coverflow('s', 4, '-108%', '8%'),
       closeGallery: () => this.closeGallery(),
-      ...this.coverflow('c', 4, '-108%', '8%'),
       sent: this.state.sent,
       notSent: !this.state.sent,
       submitting: this.state.submitting,

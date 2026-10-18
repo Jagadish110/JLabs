@@ -222,13 +222,9 @@
             font-size: clamp(40px, 13vw, 72px) !important;
           }
 
-          /* Vitad phone screenshots — stack tighter */
-          #vitad [style*="justify-content:center"] {
-            flex-wrap: wrap !important;
-          }
-          #vitad [style*="justify-content:center"] > div {
-            max-width: 45% !important;
-            margin-top: 0 !important;
+          /* Vitad showcase cover */
+          #vitad img {
+            max-width: 100% !important;
           }
         }
 
@@ -847,78 +843,23 @@
                 style="position:sticky;top:0;height:100svh;min-height:100svh;pointer-events:none;margin-top:-100svh;display:flex;align-items:center;background:transparent;padding:clamp(10px,1.4vw,22px) clamp(12px,1.6vw,26px) clamp(14px,1.8vw,30px);">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;height:min(88svh,960px);min-height:min(88svh,960px);max-height:min(88svh,960px);overflow:hidden;box-sizing:border-box;margin:0 auto;will-change:transform,opacity;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(255,255,255,.55);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.3);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));grid-auto-rows:minmax(0,1fr);gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                  <div
-                    style="display:flex;flex-direction:column;gap:min(12px,1.7vh);width:100%;min-height:0;height:100%;overflow:hidden;justify-content:center;">
-                    <div
-                      style="position:relative;width:100%;flex:1 1 auto;min-height:0;max-height:min(52svh,520px);overflow:hidden;">
-                      <div onClick="{{ openPrecare }}"
-                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX0 }},{{ cY0 }}) scale({{ cS0 }});opacity:{{ cO0 }};z-index:{{ cZ0 }};">
-                        <div
-                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
-                          <span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
-                          <span
-                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-upload.png" alt="PreCare report upload screen"
-                          style="width:100%;display:block;background:var(--card);" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX1 }},{{ cY1 }}) scale({{ cS1 }});opacity:{{ cO1 }};z-index:{{ cZ1 }};">
-                        <div
-                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
-                          <span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
-                          <span
-                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-analysis.png" alt="PreCare risk analysis and biomarker table"
-                          style="width:100%;display:block;background:var(--card);" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX2 }},{{ cY2 }}) scale({{ cS2 }});opacity:{{ cO2 }};z-index:{{ cZ2 }};">
-                        <div
-                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
-                          <span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
-                          <span
-                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-doctors.png"
-                          alt="PreCare nearby gynecologists with AI-recommended clinic"
-                          style="width:100%;display:block;background:var(--card);" />
-                      </div>
-                      <div onClick="{{ openPrecare }}"
-                        style="position:absolute;left:50%;top:50%;width:74%;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:16px;background:#FFFFFF;overflow:hidden;box-shadow:0 28px 60px rgba(var(--ink-rgb),.2);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ cX3 }},{{ cY3 }}) scale({{ cS3 }});opacity:{{ cO3 }};z-index:{{ cZ3 }};">
-                        <div
-                          style="display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid rgba(var(--ink-rgb),.08);">
-                          <span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span><span
-                            style="width:7px;height:7px;border-radius:50%;background:rgba(var(--ink-rgb),.16);"></span>
-                          <span
-                            style="margin-left:8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:rgba(var(--ink-rgb),.4);">precare.app</span>
-                        </div>
-                        <img src="images/precare-booking.png" alt="PreCare priority appointment booking confirmation"
-                          style="width:100%;display:block;background:var(--card);" />
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                    <!-- Precare AI cover — app showcase -->
+                    <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 576);margin:0 auto;">
+                      <div aria-hidden="true"
+                        style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.18) 0%, rgba(200,120,230,.12) 45%, rgba(242,102,28,0) 70%);"></div>
+                      <div data-cover="precare" onClick="{{ openPrecare }}" role="button" tabindex="0"
+                        aria-label="Open the Precare AI screen gallery"
+                        style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                        <img src="images/precare-cover.jpeg" alt="PreCare AI — Smarter Care for a Healthier Tomorrow"
+                          style="width:100%;display:block;border-radius:inherit;" />
                       </div>
                     </div>
-                    <div style="display:flex;gap:7px;align-items:center;">
-                      <span
-                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot0 }};"></span>
-                      <span
-                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot1 }};"></span>
-                      <span
-                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot2 }};"></span>
-                      <span
-                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ cDot3 }};"></span>
-                    </div>
+                    <button type="button" data-gallery-pill="1" onClick="{{ openPrecare }}"
+                      style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
+                      <span>View all 5 screens</span>
+                      <span>&#8599;</span>
+                    </button>
                   </div>
                   <div
                     style="min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
@@ -1062,23 +1003,23 @@
                       </button>
                     </div>
                   </div>
-                  <div
-                    style="display:flex;width:100%;gap:clamp(8px,1.2vw,16px);justify-content:center;align-items:flex-start;min-width:0;">
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
-                      <img src="images/vitad-scan.jpeg" alt="Vitad scan test strip screen"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                    <!-- Vitad cover — app showcase -->
+                    <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 682);margin:0 auto;">
+                      <div aria-hidden="true"
+                        style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.22) 0%, rgba(255,175,90,.14) 45%, rgba(242,102,28,0) 70%);"></div>
+                      <div data-cover="vitad" onClick="{{ openVitad }}" role="button" tabindex="0"
+                        aria-label="Open the Vitad screen gallery"
+                        style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                        <img src="images/vitad-hero.jpeg" alt="VitaD — Vitamin D, made visible app showcase"
+                          style="width:100%;display:block;border-radius:inherit;" />
+                      </div>
                     </div>
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(58svh * 807 / 1600, 34%);aspect-ratio:807/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.2);">
-                      <img src="images/vitad-home.jpeg" alt="Vitad home dashboard"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
-                    </div>
-                    <div onClick="{{ openVitad }}"
-                      style="box-sizing:content-box;flex:1 1 0;min-width:0;max-width:min(54svh * 751 / 1600, 30%);aspect-ratio:751/1600;margin-top:6svh;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#FFFFFF;padding:clamp(4px,.6vw,6px);box-shadow:0 24px 54px rgba(var(--ink-rgb),.18);">
-                      <img src="images/vitad-history.jpeg" alt="Vitad scan history"
-                        style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;" />
-                    </div>
+                    <button type="button" data-gallery-pill="1" onClick="{{ openVitad }}"
+                      style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
+                      <span>View all 3 screens</span>
+                      <span>&#8599;</span>
+                    </button>
                   </div>
                 </div>
               </article>
