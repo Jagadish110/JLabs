@@ -1687,6 +1687,483 @@
           transform: translateY(-2px);
         }
 
+        /* ---------- AI ENGINEERING FLOW ---------- */
+        .aif {
+          position: relative;
+        }
+
+        .aif-track {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 19px;
+          height: 2px;
+          background: rgba(255, 255, 255, .12);
+          overflow: hidden;
+          border-radius: 2px;
+        }
+
+        .aif-track::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 22%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, #F2661C, transparent);
+          animation: aifFlow 4.2s linear infinite;
+        }
+
+        @keyframes aifFlow {
+          from {
+            transform: translateX(-100%);
+          }
+
+          to {
+            transform: translateX(460%);
+          }
+        }
+
+        .aif-grid {
+          position: relative;
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: clamp(14px, 1.6vw, 28px);
+        }
+
+        .aif-stage {
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+          min-width: 0;
+        }
+
+        .aif-head {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          position: relative;
+          z-index: 1;
+          height: 40px;
+        }
+
+        .aif-num {
+          flex: none;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: .04em;
+          color: var(--card);
+          background: var(--ink);
+          border: 1.5px solid rgba(255, 255, 255, .35);
+        }
+
+        .aif-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, .78);
+          background: var(--ink);
+          padding: 0 12px 0 2px;
+        }
+
+        .aif-ship .aif-num {
+          background: #F2661C;
+          border-color: #F2661C;
+          color: #fff;
+          box-shadow: 0 0 0 6px rgba(242, 102, 28, .2);
+        }
+
+        .aif-ship .aif-label {
+          color: #FF8A3D;
+        }
+
+        .aif-card {
+          flex: 1 1 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: clamp(18px, 1.8vw, 26px);
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, .1);
+          background: linear-gradient(160deg, rgba(255, 255, 255, .09), rgba(255, 255, 255, .03));
+          transition: transform .35s cubic-bezier(.16, 1, .3, 1), border-color .3s ease, background .3s ease, box-shadow .3s ease;
+        }
+
+        .aif-card:hover {
+          transform: translateY(-5px);
+          border-color: rgba(242, 102, 28, .55);
+          box-shadow: 0 22px 44px rgba(0, 0, 0, .35);
+        }
+
+        .aif-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          background: rgba(255, 255, 255, .09);
+          border: 1px solid rgba(255, 255, 255, .12);
+          margin-bottom: 4px;
+        }
+
+        .aif-card h4 {
+          margin: 0;
+          font-family: 'Big Shoulders Display', sans-serif;
+          font-weight: 800;
+          font-size: clamp(22px, 1.9vw, 30px);
+          line-height: 1;
+          letter-spacing: -.005em;
+          text-transform: uppercase;
+          color: var(--card);
+        }
+
+        .aif-tags {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 9.5px;
+          letter-spacing: .12em;
+          color: rgba(255, 255, 255, .5);
+        }
+
+        .aif-card p {
+          margin: 0;
+          font-size: 13.5px;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, .68);
+          text-wrap: pretty;
+        }
+
+        .aif-ship .aif-card {
+          background: linear-gradient(165deg, rgba(242, 102, 28, .34), rgba(201, 62, 7, .12));
+          border-color: rgba(242, 102, 28, .55);
+          justify-content: center;
+        }
+
+        .aif-ship .aif-icon {
+          background: #F2661C;
+          border-color: #F2661C;
+        }
+
+        .aif-ship .aif-card p {
+          color: rgba(255, 255, 255, .82);
+        }
+
+        .aif-chips {
+          list-style: none;
+          margin: 8px 0 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+        }
+
+        .aif-chips li {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: #fff;
+          padding: 7px 12px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, .35);
+          background: rgba(255, 255, 255, .08);
+        }
+
+        @media (max-width: 1100px) {
+          .aif-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            row-gap: 30px;
+          }
+
+          .aif-track {
+            display: none;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .aif-grid {
+            grid-template-columns: minmax(0, 1fr);
+            row-gap: 0;
+          }
+
+          .aif-stage {
+            position: relative;
+            padding-bottom: 28px;
+          }
+
+          .aif-stage:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            left: 19px;
+            bottom: 0;
+            height: 28px;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(242, 102, 28, .7), rgba(255, 255, 255, .12));
+          }
+
+          .aif-card {
+            position: relative;
+            z-index: 1;
+          }
+
+          .aif-card:hover {
+            transform: none;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .aif-track::after {
+            animation: none;
+            opacity: 0;
+          }
+
+          .aif-card {
+            transition: none;
+          }
+
+          .aif-card:hover {
+            transform: none;
+          }
+        }
+
+        /* ---------- TECH STACK BENTO ---------- */
+        .tsk {
+          display: grid;
+          grid-template-columns: repeat(12, minmax(0, 1fr));
+          gap: clamp(12px, 1.4vw, 20px);
+        }
+
+        .tsk-card {
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          min-width: 0;
+          padding: clamp(20px, 2vw, 30px);
+          border-radius: 22px;
+          border: 1px solid rgba(255, 255, 255, .11);
+          background: linear-gradient(160deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025));
+          transition: border-color .3s ease, box-shadow .3s ease, transform .35s cubic-bezier(.16, 1, .3, 1);
+        }
+
+        .tsk-card:hover {
+          border-color: rgba(242, 102, 28, .5);
+          box-shadow: 0 24px 48px rgba(0, 0, 0, .35);
+        }
+
+        .tsk-top {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 6px;
+        }
+
+        .tsk-icon {
+          width: 46px;
+          height: 46px;
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          background: rgba(255, 255, 255, .09);
+          border: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        .tsk-idx {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          letter-spacing: .16em;
+          color: rgba(255, 255, 255, .38);
+        }
+
+        .tsk-card h3 {
+          margin: 0;
+          font-family: 'Big Shoulders Display', sans-serif;
+          font-weight: 900;
+          font-size: clamp(28px, 2.6vw, 42px);
+          line-height: .95;
+          letter-spacing: -.01em;
+          text-transform: uppercase;
+          color: var(--card);
+        }
+
+        .tsk-card p {
+          margin: 0 0 6px;
+          font-size: 13.5px;
+          line-height: 1.55;
+          color: rgba(255, 255, 255, .62);
+          max-width: 42ch;
+          text-wrap: pretty;
+        }
+
+        .tsk-chips {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: auto;
+        }
+
+        .tsk-chips li {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px;
+          letter-spacing: .06em;
+          color: rgba(255, 255, 255, .88);
+          background: rgba(255, 255, 255, .07);
+          border: 1px solid rgba(255, 255, 255, .14);
+          padding: 8px 14px;
+          border-radius: 10px;
+          transition: background .25s ease, border-color .25s ease, transform .25s ease;
+        }
+
+        .tsk-chips li:hover {
+          background: rgba(242, 102, 28, .22);
+          border-color: rgba(242, 102, 28, .65);
+          transform: translateY(-2px);
+        }
+
+        .tsk-group {
+          display: grid;
+          gap: 10px;
+        }
+
+        .tsk-group>span {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 10px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          color: rgba(255, 255, 255, .45);
+        }
+
+        .tsk-ai {
+          background: linear-gradient(160deg, rgba(242, 102, 28, .3), rgba(201, 62, 7, .08) 70%);
+          border-color: rgba(242, 102, 28, .45);
+          gap: 14px;
+        }
+
+        .tsk-ai .tsk-icon {
+          background: #F2661C;
+          border-color: #F2661C;
+        }
+
+        .tsk-ai .tsk-idx {
+          color: rgba(255, 255, 255, .6);
+        }
+
+        .tsk-ai .tsk-chips li {
+          font-size: 12px;
+          padding: 9px 16px;
+          background: rgba(255, 255, 255, .1);
+        }
+
+        .tsk-ai::after {
+          content: "";
+          position: absolute;
+          right: -60px;
+          top: -60px;
+          width: 220px;
+          height: 220px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(255, 138, 61, .35), transparent 70%);
+          pointer-events: none;
+        }
+
+        @media (min-width: 1101px) {
+          .tsk-ai {
+            grid-column: span 6;
+            grid-row: span 2;
+          }
+
+          .tsk-ai p+.tsk-group {
+            margin-top: auto;
+          }
+
+          .tsk-backend {
+            grid-column: span 6;
+          }
+
+          .tsk-frontend,
+          .tsk-mobile {
+            grid-column: span 3;
+          }
+
+          .tsk-infra {
+            grid-column: span 12;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px 28px;
+          }
+
+          .tsk-infra .tsk-top {
+            margin: 0;
+            gap: 16px;
+          }
+
+          .tsk-infra .tsk-idx {
+            display: none;
+          }
+
+          .tsk-infra h3 {
+            margin-right: auto;
+          }
+
+          .tsk-infra p {
+            display: none;
+          }
+
+          .tsk-infra .tsk-chips {
+            margin-top: 0;
+          }
+        }
+
+        @media (max-width: 1100px) {
+          .tsk {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
+
+          .tsk-ai,
+          .tsk-infra {
+            grid-column: 1 / -1;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .tsk {
+            grid-template-columns: minmax(0, 1fr);
+          }
+
+          .tsk-chips li {
+            font-size: 10.5px;
+            padding: 7px 12px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+          .tsk-card,
+          .tsk-chips li {
+            transition: none;
+          }
+
+          .tsk-chips li:hover {
+            transform: none;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
 
           [data-cover],
@@ -2338,18 +2815,12 @@
                   <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 576);margin:0 auto;">
                     <div aria-hidden="true"
                       style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.18) 0%, rgba(200,120,230,.12) 45%, rgba(242,102,28,0) 70%);"></div>
-                    <div data-cover="precare" onClick="{{ openPrecare }}" role="button" tabindex="0"
-                      aria-label="Open the Precare AI screen gallery"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                    <div data-cover="precare"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
                       <img src="images/precare-cover.jpeg" alt="PreCare AI — Smarter Care for a Healthier Tomorrow"
                         style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
-                  <button type="button" data-gallery-pill="1" onClick="{{ openPrecare }}"
-                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
-                    <span>View all 5 screens</span>
-                    <span>&#8599;</span>
-                  </button>
                 </div>
                   <div
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
@@ -2380,14 +2851,6 @@
                       <span
                         style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">WEB
                         APP</span>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
-                      <button type="button" onClick="{{ openPrecare }}"
-                        style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
-                        data-cta="case-study">
-                        <span>View Case Study</span>
-                        <span>&#8599;</span>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -2426,32 +2889,18 @@
                       <span
                         style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">VISION</span>
                     </div>
-                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
-                      <button type="button" onClick="{{ openVitad }}"
-                        style="display:inline-flex;align-items:center;gap:8px;background:#1A1108;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;font-weight:600;padding:10px 20px;border-radius:999px;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s ease;box-shadow:0 8px 24px rgba(26,17,8,.2);"
-                        data-cta="case-study">
-                        <span>View Case Study</span>
-                        <span>&#8599;</span>
-                      </button>
-                    </div>
                   </div>
                 <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
                   <!-- Vitad cover — app showcase -->
                   <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 682);margin:0 auto;">
                     <div aria-hidden="true"
                       style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.22) 0%, rgba(255,175,90,.14) 45%, rgba(242,102,28,0) 70%);"></div>
-                    <div data-cover="vitad" onClick="{{ openVitad }}" role="button" tabindex="0"
-                      aria-label="Open the Vitad screen gallery"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                    <div data-cover="vitad"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
                       <img src="images/vitad-hero.jpeg" alt="VitaD — Vitamin D, made visible app showcase"
                         style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
-                  <button type="button" data-gallery-pill="1" onClick="{{ openVitad }}"
-                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
-                    <span>View all 3 screens</span>
-                    <span>&#8599;</span>
-                  </button>
                 </div>
                 </div>
               </article>
@@ -2467,18 +2916,12 @@
                   <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
                     <div aria-hidden="true"
                       style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
-                    <div data-cover="codesafe" onClick="{{ openCodesafe }}" role="button" tabindex="0"
-                      aria-label="Open the CodeSafe screen gallery"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                    <div data-cover="codesafe"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
                       <img src="images/codesafe-cover.webp" alt="CodeSafe — find security vulnerabilities before they reach production"
                         style="width:100%;display:block;border-radius:inherit;" />
                     </div>
                   </div>
-                  <button type="button" data-gallery-pill="1" onClick="{{ openCodesafe }}"
-                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;">
-                    <span>View all 4 screens</span>
-                    <span>&#8599;</span>
-                  </button>
                 </div>
                   <div
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
@@ -2539,137 +2982,67 @@
               outputs, agents and production infrastructure.</p>
           </div>
 
-          <!-- Pipeline visualization -->
-          <div
-            style="display:flex;flex-wrap:wrap;gap:2px;border:1px solid rgba(var(--surface-rgb),.16);border-radius:20px;overflow:hidden;">
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a4 4 0 0 1 4 4v2H8V6a4 4 0 0 1 4-4z" />
-                  <rect x="2" y="8" width="20" height="14" rx="2" />
-                  <path d="M8 15h.01M12 15h.01M16 15h.01" />
-                </svg>
+          <!-- AI engineering flow -->
+          <div class="aif" role="list" aria-label="AI engineering flow from model to production">
+            <div class="aif-track" aria-hidden="true"></div>
+            <div class="aif-grid">
+            <div class="aif-stage">
+              <div class="aif-head"><span class="aif-num">01</span><span class="aif-label">Model</span></div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a4 4 0 0 1 4 4v2H8V6a4 4 0 0 1 4-4z" /><rect x="2" y="8" width="20" height="14" rx="2" /><path d="M8 15h.01M12 15h.01M16 15h.01" /></svg></div>
+                <h4>LLMs</h4>
+                <div class="aif-tags">GPT &middot; GEMINI &middot; CLAUDE</div>
+                <p>Provider-agnostic model selection, prompting and evaluation.</p>
               </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                LLMs</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                GPT &middot; GEMINI &middot; CLAUDE</div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg></div>
+                <h4>Structured Output</h4>
+                <div class="aif-tags">PROMPTS &middot; SCHEMAS</div>
+                <p>Schema-validated JSON so model output plugs straight into code.</p>
+              </div>
             </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                  <polyline points="14 2 14 8 20 8" />
-                  <line x1="16" y1="13" x2="8" y2="13" />
-                  <line x1="16" y1="17" x2="8" y2="17" />
-                  <polyline points="10 9 9 9 8 9" />
-                </svg>
+            <div class="aif-stage">
+              <div class="aif-head"><span class="aif-num">02</span><span class="aif-label">Knowledge</span></div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v4c0 1.66 4.03 3 9 3s9-1.34 9-3V5" /><path d="M3 9v4c0 1.66 4.03 3 9 3s9-1.34 9-3V9" /><path d="M3 13v4c0 1.66 4.03 3 9 3s9-1.34 9-3v-4" /></svg></div>
+                <h4>RAG</h4>
+                <div class="aif-tags">RETRIEVAL &middot; RERANKING</div>
+                <p>Grounded answers over your own documents, not guesses.</p>
               </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                Structured Output</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                PROMPTS &middot; SCHEMAS</div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="18" r="3" /><circle cx="6" cy="6" r="3" /><path d="M13 6h3a2 2 0 0 1 2 2v7" /><path d="M11 18H8a2 2 0 0 1-2-2V9" /></svg></div>
+                <h4>Embeddings</h4>
+                <div class="aif-tags">VECTOR SEARCH &middot; SIMILARITY</div>
+                <p>Semantic search that finds meaning, not just keywords.</p>
+              </div>
             </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M3 5v4c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
-                  <path d="M3 9v4c0 1.66 4.03 3 9 3s9-1.34 9-3V9" />
-                  <path d="M3 13v4c0 1.66 4.03 3 9 3s9-1.34 9-3v-4" />
-                </svg>
+            <div class="aif-stage">
+              <div class="aif-head"><span class="aif-num">03</span><span class="aif-label">Action</span></div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg></div>
+                <h4>Tools &amp; APIs</h4>
+                <div class="aif-tags">FUNCTION CALLING</div>
+                <p>Models that call your APIs, databases and business logic.</p>
               </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                RAG</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                RETRIEVAL &middot; RERANKING</div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /><path d="M9 8h.01M15 8h.01" /></svg></div>
+                <h4>Agents</h4>
+                <div class="aif-tags">AUTONOMOUS &middot; MULTI-AGENT</div>
+                <p>Multi-step workflows that plan, act and hand off.</p>
+              </div>
             </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="18" cy="18" r="3" />
-                  <circle cx="6" cy="6" r="3" />
-                  <path d="M13 6h3a2 2 0 0 1 2 2v7" />
-                  <path d="M11 18H8a2 2 0 0 1-2-2V9" />
-                </svg>
+            <div class="aif-stage aif-ship">
+              <div class="aif-head"><span class="aif-num">04</span><span class="aif-label">Ship</span></div>
+              <div class="aif-card">
+                <div class="aif-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg></div>
+                <h4>Production</h4>
+                <div class="aif-tags">DEPLOY &middot; MONITOR &middot; SCALE</div>
+                <p>Logging, cost control, fallbacks and uptime &mdash; so it keeps working after launch day.</p>
+                <ul class="aif-chips">
+                  <li>Deploy</li><li>Monitor</li><li>Scale</li>
+                </ul>
               </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                Embeddings</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                VECTOR SEARCH &middot; SIMILARITY</div>
             </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <path
-                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-              </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                Tools &amp; APIs</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                FUNCTION CALLING</div>
-            </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(var(--surface-rgb),.06);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(var(--surface-rgb),.12);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)"
-                  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                  <path d="M9 8h.01M15 8h.01" />
-                </svg>
-              </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:var(--card);text-transform:uppercase;">
-                Agents</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                AUTONOMOUS &middot; MULTI-AGENT</div>
-            </div>
-            <div
-              style="flex:1 1 120px;min-width:120px;background:rgba(242,102,28,.18);padding:clamp(18px,2vw,28px);display:grid;gap:8px;align-content:center;text-align:center;transition:background .3s ease;"
-              style-hover="background:rgba(242,102,28,.28);">
-              <div style="display:flex;justify-content:center;">
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#F2661C" stroke-width="1.7"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <div
-                style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:clamp(16px,1.4vw,22px);line-height:1.02;color:#F2661C;text-transform:uppercase;">
-                Production</div>
-              <div
-                style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(255,255,255,.5);">
-                DEPLOY &middot; MONITOR &middot; SCALE</div>
             </div>
           </div>
         </section>
@@ -2938,159 +3311,52 @@
               style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
               Technical Stack</h2>
           </div>
-          <div
-            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(12px,1.6vw,20px);">
-
-            <!-- AI card -->
-            <div
-              style="background:rgba(242,102,28,.12);border:1px solid rgba(242,102,28,.25);border-radius:20px;padding:clamp(20px,2vw,28px);display:grid;gap:16px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span
-                  style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(242,102,28,.2);flex:none;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F2661C" stroke-width="1.8"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                    <path d="M9 8h.01M15 8h.01" />
-                  </svg>
-                </span>
-                <span
-                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;color:#F2661C;letter-spacing:.02em;text-transform:uppercase;">AI
-                  &amp; ML</span>
+          <div class="tsk">
+            <div class="tsk-card tsk-ai">
+              <div class="tsk-top">
+                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /><path d="M9 8h.01M15 8h.01" /></svg></span>
+                <span class="tsk-idx">01</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:7px;">
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">GPT-4o</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">Gemini</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">Claude</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">RAG</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">Embeddings</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">Vector
-                  DBs</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.85);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:7px 13px;border-radius:8px;">AI
-                  Agents</span>
-              </div>
+              <h3>AI &amp; ML</h3>
+              <p>Models, retrieval and agents that run real workflows.</p>
+              <div class="tsk-group"><span>Models</span><ul class="tsk-chips"><li>GPT-4o</li><li>Gemini</li><li>Claude</li></ul></div><div class="tsk-group"><span>Techniques</span><ul class="tsk-chips"><li>RAG</li><li>Embeddings</li><li>Vector DBs</li><li>AI Agents</li></ul></div>
             </div>
-
-            <!-- Backend card -->
-            <div
-              style="background:rgba(var(--surface-rgb),.05);border:1px solid rgba(var(--surface-rgb),.12);border-radius:20px;padding:clamp(20px,2vw,28px);display:grid;gap:16px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span
-                  style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(var(--surface-rgb),.1);flex:none;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-                    <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-                    <line x1="6" y1="6" x2="6.01" y2="6" />
-                    <line x1="6" y1="18" x2="6.01" y2="18" />
-                  </svg>
-                </span>
-                <span
-                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,.85);letter-spacing:.02em;text-transform:uppercase;">Backend</span>
+            <div class="tsk-card tsk-backend">
+              <div class="tsk-top">
+                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2" /><rect x="2" y="14" width="20" height="8" rx="2" ry="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></svg></span>
+                <span class="tsk-idx">02</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:7px;">
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Python</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">FastAPI</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Node.js</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Supabase</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">PostgreSQL</span>
-              </div>
+              <h3>Backend</h3>
+              <p>APIs and data layers built to hold up in production.</p>
+              <ul class="tsk-chips"><li>Python</li><li>FastAPI</li><li>Node.js</li><li>Supabase</li><li>PostgreSQL</li></ul>
             </div>
-
-            <!-- Frontend card -->
-            <div
-              style="background:rgba(var(--surface-rgb),.05);border:1px solid rgba(var(--surface-rgb),.12);border-radius:20px;padding:clamp(20px,2vw,28px);display:grid;gap:16px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span
-                  style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(var(--surface-rgb),.1);flex:none;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="16 18 22 12 16 6" />
-                    <polyline points="8 6 2 12 8 18" />
-                  </svg>
-                </span>
-                <span
-                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,.85);letter-spacing:.02em;text-transform:uppercase;">Frontend</span>
+            <div class="tsk-card tsk-frontend">
+              <div class="tsk-top">
+                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg></span>
+                <span class="tsk-idx">03</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:7px;">
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">React</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Next.js</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">TypeScript</span>
-              </div>
+              <h3>Frontend</h3>
+              <p>Fast, typed interfaces.</p>
+              <ul class="tsk-chips"><li>React</li><li>Next.js</li><li>TypeScript</li></ul>
             </div>
-
-            <!-- Mobile card -->
-            <div
-              style="background:rgba(var(--surface-rgb),.05);border:1px solid rgba(var(--surface-rgb),.12);border-radius:20px;padding:clamp(20px,2vw,28px);display:grid;gap:16px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span
-                  style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(var(--surface-rgb),.1);flex:none;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                    <line x1="12" y1="18" x2="12.01" y2="18" />
-                  </svg>
-                </span>
-                <span
-                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,.85);letter-spacing:.02em;text-transform:uppercase;">Mobile</span>
+            <div class="tsk-card tsk-mobile">
+              <div class="tsk-top">
+                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg></span>
+                <span class="tsk-idx">04</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:7px;">
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Flutter</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Dart</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Android</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">iOS</span>
-              </div>
+              <h3>Mobile</h3>
+              <p>One codebase, two stores.</p>
+              <ul class="tsk-chips"><li>Flutter</li><li>Dart</li><li>Android</li><li>iOS</li></ul>
             </div>
-
-            <!-- Infra card -->
-            <div
-              style="background:rgba(var(--surface-rgb),.05);border:1px solid rgba(var(--surface-rgb),.12);border-radius:20px;padding:clamp(20px,2vw,28px);display:grid;gap:16px;">
-              <div style="display:flex;align-items:center;gap:10px;">
-                <span
-                  style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:rgba(var(--surface-rgb),.1);flex:none;">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)"
-                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                    <path d="M2 17l10 5 10-5" />
-                    <path d="M2 12l10 5 10-5" />
-                  </svg>
-                </span>
-                <span
-                  style="font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,.85);letter-spacing:.02em;text-transform:uppercase;">Infra</span>
+            <div class="tsk-card tsk-infra">
+              <div class="tsk-top">
+                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg></span>
+                <span class="tsk-idx">05</span>
               </div>
-              <div style="display:flex;flex-wrap:wrap;gap:7px;">
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Docker</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">GCP</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Vercel</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">CI/CD</span>
-                <span
-                  style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.75);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:7px 13px;border-radius:8px;">Firebase</span>
-              </div>
+              <h3>Infra</h3>
+              <p>Containers, cloud and delivery pipelines.</p>
+              <ul class="tsk-chips"><li>Docker</li><li>GCP</li><li>Vercel</li><li>CI/CD</li><li>Firebase</li></ul>
             </div>
-
           </div>
         </section>
 
