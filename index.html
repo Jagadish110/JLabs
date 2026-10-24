@@ -696,21 +696,6 @@
             gap: 12px !important;
           }
 
-          /* ── Tech Stack ───────────────────────────────────────── */
-          #techstack {
-            padding: var(--sec-py) var(--sec-px) !important;
-          }
-
-          #techstack h2 {
-            font-size: clamp(34px, 11vw, 60px) !important;
-          }
-
-          /* Tech stack chip rows: wrap freely */
-          #techstack [style*="display:flex;flex-wrap:wrap"],
-          #techstack [style*="display:flex;gap"] {
-            gap: 8px !important;
-          }
-
           /* ── Contact / Start ──────────────────────────────────── */
           #start {
             padding: var(--sec-py) var(--sec-px) !important;
@@ -980,8 +965,7 @@
           }
 
           #process>div:last-child,
-          #whyme>div:last-child,
-          #techstack>div:last-child {
+          #whyme>div:last-child {
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
           }
 
@@ -994,7 +978,6 @@
           }
 
           /* Prevent long labels from breaking layouts. */
-          #techstack span,
           :is(#work, #work-apps) button,
           #capabilities span {
             max-width: 100%;
@@ -1181,8 +1164,7 @@
           :is(#work, #work-apps) h2,
           #ai-engineering h2,
           #process h2,
-          #whyme h2,
-          #techstack h2 {
+          #whyme h2 {
             font-size: clamp(40px, 12vw, 66px) !important;
             line-height: .84 !important;
             letter-spacing: -.025em !important;
@@ -1433,28 +1415,6 @@
           #about p {
             font-size: 14px !important;
             line-height: 1.65 !important;
-          }
-
-          /* ---------- TECH STACK ---------- */
-          #techstack {
-            padding: 42px var(--sec-px) !important;
-            overflow: hidden !important;
-          }
-
-          #techstack>div:last-child {
-            display: grid !important;
-            grid-template-columns: 1fr !important;
-            gap: 10px !important;
-          }
-
-          #techstack>div:last-child>div {
-            min-width: 0 !important;
-            padding: 20px !important;
-          }
-
-          #techstack span {
-            font-size: 9px !important;
-            padding: 6px 9px !important;
           }
 
           /* ---------- CONTACT ---------- */
@@ -1941,235 +1901,6 @@
           }
         }
 
-        /* ---------- TECH STACK BENTO ---------- */
-        .tsk {
-          display: grid;
-          grid-template-columns: repeat(12, minmax(0, 1fr));
-          gap: clamp(12px, 1.4vw, 20px);
-        }
-
-        .tsk-card {
-          position: relative;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          min-width: 0;
-          padding: clamp(20px, 2vw, 30px);
-          border-radius: 22px;
-          border: 1px solid rgba(255, 255, 255, .11);
-          background: linear-gradient(160deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025));
-          transition: border-color .3s ease, box-shadow .3s ease, transform .35s cubic-bezier(.16, 1, .3, 1);
-        }
-
-        .tsk-card:hover {
-          border-color: rgba(242, 102, 28, .5);
-          box-shadow: 0 24px 48px rgba(0, 0, 0, .35);
-        }
-
-        .tsk-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 6px;
-        }
-
-        .tsk-icon {
-          width: 46px;
-          height: 46px;
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #fff;
-          background: rgba(255, 255, 255, .09);
-          border: 1px solid rgba(255, 255, 255, .12);
-        }
-
-        .tsk-idx {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 11px;
-          letter-spacing: .16em;
-          color: rgba(255, 255, 255, .38);
-        }
-
-        .tsk-card h3 {
-          margin: 0;
-          font-family: 'Big Shoulders Display', sans-serif;
-          font-weight: 900;
-          font-size: clamp(28px, 2.6vw, 42px);
-          line-height: .95;
-          letter-spacing: -.01em;
-          text-transform: uppercase;
-          color: var(--card);
-        }
-
-        .tsk-card p {
-          margin: 0 0 6px;
-          font-size: 13.5px;
-          line-height: 1.55;
-          color: rgba(255, 255, 255, .62);
-          max-width: 42ch;
-          text-wrap: pretty;
-        }
-
-        .tsk-chips {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-          margin-top: auto;
-        }
-
-        .tsk-chips li {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 11px;
-          letter-spacing: .06em;
-          color: rgba(255, 255, 255, .88);
-          background: rgba(255, 255, 255, .07);
-          border: 1px solid rgba(255, 255, 255, .14);
-          padding: 8px 14px;
-          border-radius: 10px;
-          transition: background .25s ease, border-color .25s ease, transform .25s ease;
-        }
-
-        .tsk-chips li:hover {
-          background: rgba(242, 102, 28, .22);
-          border-color: rgba(242, 102, 28, .65);
-          transform: translateY(-2px);
-        }
-
-        .tsk-group {
-          display: grid;
-          gap: 10px;
-        }
-
-        .tsk-group>span {
-          font-family: 'JetBrains Mono', monospace;
-          font-size: 10px;
-          letter-spacing: .18em;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, .45);
-        }
-
-        .tsk-ai {
-          background: linear-gradient(160deg, rgba(242, 102, 28, .3), rgba(201, 62, 7, .08) 70%);
-          border-color: rgba(242, 102, 28, .45);
-          gap: 14px;
-        }
-
-        .tsk-ai .tsk-icon {
-          background: #F2661C;
-          border-color: #F2661C;
-        }
-
-        .tsk-ai .tsk-idx {
-          color: rgba(255, 255, 255, .6);
-        }
-
-        .tsk-ai .tsk-chips li {
-          font-size: 12px;
-          padding: 9px 16px;
-          background: rgba(255, 255, 255, .1);
-        }
-
-        .tsk-ai::after {
-          content: "";
-          position: absolute;
-          right: -60px;
-          top: -60px;
-          width: 220px;
-          height: 220px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(255, 138, 61, .35), transparent 70%);
-          pointer-events: none;
-        }
-
-        @media (min-width: 1101px) {
-          .tsk-ai {
-            grid-column: span 6;
-            grid-row: span 2;
-          }
-
-          .tsk-ai p+.tsk-group {
-            margin-top: auto;
-          }
-
-          .tsk-backend {
-            grid-column: span 6;
-          }
-
-          .tsk-frontend,
-          .tsk-mobile {
-            grid-column: span 3;
-          }
-
-          .tsk-infra {
-            grid-column: span 12;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 14px 28px;
-          }
-
-          .tsk-infra .tsk-top {
-            margin: 0;
-            gap: 16px;
-          }
-
-          .tsk-infra .tsk-idx {
-            display: none;
-          }
-
-          .tsk-infra h3 {
-            margin-right: auto;
-          }
-
-          .tsk-infra p {
-            display: none;
-          }
-
-          .tsk-infra .tsk-chips {
-            margin-top: 0;
-          }
-        }
-
-        @media (max-width: 1100px) {
-          .tsk {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-          }
-
-          .tsk-ai,
-          .tsk-infra {
-            grid-column: 1 / -1;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .tsk {
-            grid-template-columns: minmax(0, 1fr);
-          }
-
-          .tsk-chips li {
-            font-size: 10.5px;
-            padding: 7px 12px;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-          .tsk-card,
-          .tsk-chips li {
-            transition: none;
-          }
-
-          .tsk-chips li:hover {
-            transform: none;
-          }
-        }
-
         @media (prefers-reduced-motion: reduce) {
 
           [data-cover],
@@ -2276,7 +2007,7 @@
               </a>
             </div>
 
-            <div style="width:min(100%,290px);">
+            <div style="width:min(100%,330px,32vw);">
               <div style="display:flex;align-items:center;gap:8px;margin-bottom:clamp(12px,1.4vw,18px);">
                 <span
                   style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;color:#C93E07;white-space:nowrap;">AVAILABLE
@@ -2292,22 +2023,45 @@
                 AI products, mobile apps, full-stack systems &mdash; scoped, built and shipped to your requirements.
               </p>
 
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
                 <div>
                   <div
                     style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(30px,3vw,44px);line-height:.9;color:#C93E07;">
-                    04</div>
+                    07</div>
                   <div
                     style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:6px;">
-                    Products shipped</div>
+                    Projects built</div>
                 </div>
                 <div>
                   <div
                     style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(30px,3vw,44px);line-height:.9;color:#C93E07;">
-                    6&ndash;8</div>
+                    05</div>
                   <div
                     style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:6px;">
-                    Weeks to MVP</div>
+                    Web apps</div>
+                </div>
+                <div>
+                  <div
+                    style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(30px,3vw,44px);line-height:.9;color:#C93E07;">
+                    02</div>
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-top:6px;">
+                    Mobile apps</div>
+                </div>
+              </div>
+              <div style="margin-top:clamp(18px,2vw,26px);">
+                <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;color:rgba(var(--ink-rgb),.5);text-transform:uppercase;margin-bottom:12px;">
+                  Tech I work with</div>
+                <div style="display:flex;flex-wrap:wrap;gap:6px;">
+                  <span title="Python" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/python.svg" alt="Python" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Flutter" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/flutter.svg" alt="Flutter" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="React" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/react.svg" alt="React" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Next.js" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/nextdotjs.svg" alt="Next.js" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Node.js" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/nodedotjs.svg" alt="Node.js" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Supabase" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/supabase.svg" alt="Supabase" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="PostgreSQL" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/postgresql.svg" alt="PostgreSQL" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Firebase" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/firebase.svg" alt="Firebase" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
+                  <span title="Vercel" style="width:31px;height:31px;border-radius:9px;background:#fff;border:1px solid rgba(var(--ink-rgb),.09);display:grid;place-items:center;box-shadow:0 4px 12px rgba(var(--ink-rgb),.06);"><img src="images/tech/vercel.svg" alt="Vercel" width="17" height="17" style="width:17px;height:17px;display:block;" /></span>
                 </div>
               </div>
             </div>
@@ -3183,7 +2937,6 @@
           </div>
         </section>
 
-
         <!-- ================= AI ENGINEERING ================= -->
         <section id="ai-engineering" style="background:var(--ink);padding:var(--sec-py) var(--sec-px);">
           <div
@@ -3521,65 +3274,6 @@
           </div>
         </section>
 
-        <!-- ================= TECHNICAL STACK ================= -->
-        <section id="techstack" style="background:var(--ink);padding:var(--sec-py) var(--sec-px);">
-          <div style="margin-bottom:clamp(26px,3vw,48px);">
-            <div
-              style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.8);margin-bottom:14px;">
-              08 / STACK</div>
-            <h2
-              style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
-              Technical Stack</h2>
-          </div>
-          <div class="tsk">
-            <div class="tsk-card tsk-ai">
-              <div class="tsk-top">
-                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" /><path d="M9 8h.01M15 8h.01" /></svg></span>
-                <span class="tsk-idx">01</span>
-              </div>
-              <h3>AI &amp; ML</h3>
-              <p>Models, retrieval and agents that run real workflows.</p>
-              <div class="tsk-group"><span>Models</span><ul class="tsk-chips"><li>GPT-4o</li><li>Gemini</li><li>Claude</li></ul></div><div class="tsk-group"><span>Techniques</span><ul class="tsk-chips"><li>RAG</li><li>Embeddings</li><li>Vector DBs</li><li>AI Agents</li></ul></div>
-            </div>
-            <div class="tsk-card tsk-backend">
-              <div class="tsk-top">
-                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2" /><rect x="2" y="14" width="20" height="8" rx="2" ry="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></svg></span>
-                <span class="tsk-idx">02</span>
-              </div>
-              <h3>Backend</h3>
-              <p>APIs and data layers built to hold up in production.</p>
-              <ul class="tsk-chips"><li>Python</li><li>FastAPI</li><li>Node.js</li><li>Supabase</li><li>PostgreSQL</li></ul>
-            </div>
-            <div class="tsk-card tsk-frontend">
-              <div class="tsk-top">
-                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg></span>
-                <span class="tsk-idx">03</span>
-              </div>
-              <h3>Frontend</h3>
-              <p>Fast, typed interfaces.</p>
-              <ul class="tsk-chips"><li>React</li><li>Next.js</li><li>TypeScript</li></ul>
-            </div>
-            <div class="tsk-card tsk-mobile">
-              <div class="tsk-top">
-                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2" /><line x1="12" y1="18" x2="12.01" y2="18" /></svg></span>
-                <span class="tsk-idx">04</span>
-              </div>
-              <h3>Mobile</h3>
-              <p>One codebase, two stores.</p>
-              <ul class="tsk-chips"><li>Flutter</li><li>Dart</li><li>Android</li><li>iOS</li></ul>
-            </div>
-            <div class="tsk-card tsk-infra">
-              <div class="tsk-top">
-                <span class="tsk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z" /><path d="M2 17l10 5 10-5" /><path d="M2 12l10 5 10-5" /></svg></span>
-                <span class="tsk-idx">05</span>
-              </div>
-              <h3>Infra</h3>
-              <p>Containers, cloud and delivery pipelines.</p>
-              <ul class="tsk-chips"><li>Docker</li><li>GCP</li><li>Vercel</li><li>CI/CD</li><li>Firebase</li></ul>
-            </div>
-          </div>
-        </section>
-
         <!-- ================= CONTACT / START ================= -->
         <section id="start" style="background:var(--surface);padding:clamp(30px,4vw,70px) clamp(18px,2.4vw,44px);">
           <div
@@ -3587,7 +3281,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                09 / START</div>
+                08 / START</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(42px,7vw,130px);line-height:.82;letter-spacing:-.02em;margin:0 0 20px;color:var(--ink);text-transform:uppercase;">
                 Have an idea<br />or problem?</h2>
@@ -3827,7 +3521,7 @@ class Component extends DCLogic {
     this.motionTimer = setInterval(onScroll, 120);
     onScroll();
 
-    const sel = '#capabilities article, #capabilities h2, #work h3, #work-apps h3, #process article, #process h2, #process > div > div, #whyme h2, #whyme > div:last-child > div, #ai-engineering h2, #ai-engineering > div:last-child > div, #about h2, #about p, #start h2, #start form, #techstack h2, #techstack > div:last-child > div';
+    const sel = '#capabilities article, #capabilities h2, #work h3, #work-apps h3, #process article, #process h2, #process > div > div, #whyme h2, #whyme > div:last-child > div, #ai-engineering h2, #ai-engineering > div:last-child > div, #about h2, #about p, #start h2, #start form';
     const seen = new Set();
     const targets = [];
     document.querySelectorAll(sel).forEach((el) => {
