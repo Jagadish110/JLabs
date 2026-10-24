@@ -257,27 +257,27 @@
            RESPONSIVE — 880px and below (tablet portrait + small screens)
            ============================================================ */
         @media (max-width: 880px) {
-          #work article {
+          :is(#work, #work-apps) article {
             padding: 10px !important;
           }
 
-          #work article>div {
+          :is(#work, #work-apps) article>div {
             height: auto !important;
             min-height: 0 !important;
             padding: 26px 20px !important;
             gap: 22px !important;
           }
 
-          #work article h3 {
+          :is(#work, #work-apps) article h3 {
             font-size: clamp(36px, 9vw, 64px) !important;
           }
           /* Work project tabs — stack nicely */
-          #work>div:nth-child(2) {
+          :is(#work, #work-apps)>div:nth-child(2) {
             flex-wrap: wrap !important;
             gap: 8px !important;
           }
 
-          #work>div:nth-child(2)>div {
+          :is(#work, #work-apps)>div:nth-child(2)>div {
             flex-wrap: wrap !important;
             gap: 6px !important;
           }
@@ -362,7 +362,7 @@
           }
 
           /* Work cards: single col */
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             grid-template-columns: 1fr !important;
             padding: var(--card-pad) !important;
             height: auto !important;
@@ -371,7 +371,7 @@
             overflow-y: auto !important;
           }
 
-          #work article[id] {
+          :is(#work, #work-apps) article[id] {
             height: auto !important;
             min-height: auto !important;
           }
@@ -507,16 +507,16 @@
           }
 
           /* ── Featured Work ────────────────────────────────────── */
-          #work {
+          :is(#work, #work-apps) {
             padding-bottom: 0 !important;
           }
 
-          #work h2 {
+          :is(#work, #work-apps) h2 {
             font-size: clamp(36px, 11vw, 64px) !important;
           }
 
           /* Section header padding */
-          #work>div:first-child {
+          :is(#work, #work-apps)>div:first-child {
             padding: var(--work-head-py) var(--work-head-px) !important;
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -524,7 +524,7 @@
           }
 
           /* Tab nav row: scroll horizontally, don't wrap arrow+tabs badly */
-          #work>div:nth-child(2) {
+          :is(#work, #work-apps)>div:nth-child(2) {
             padding: 0 var(--work-head-px) 16px !important;
             flex-wrap: nowrap !important;
             overflow-x: auto !important;
@@ -533,25 +533,25 @@
             align-items: center !important;
           }
 
-          #work>div:nth-child(2)>div {
+          :is(#work, #work-apps)>div:nth-child(2)>div {
             flex-wrap: nowrap !important;
             gap: 6px !important;
           }
 
-          #work>div:nth-child(2) button {
+          :is(#work, #work-apps)>div:nth-child(2) button {
             flex-shrink: 0 !important;
             white-space: nowrap !important;
           }
 
           /* Project cards: single column, no sticky */
-          #work article[id] {
+          :is(#work, #work-apps) article[id] {
             height: auto !important;
             min-height: auto !important;
             overflow: visible !important;
             padding: 0 8px 8px !important;
           }
 
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             grid-template-columns: 1fr !important;
             padding: 20px 18px !important;
             height: auto !important;
@@ -561,7 +561,7 @@
             gap: 24px !important;
           }
 
-          #work article h3 {
+          :is(#work, #work-apps) article h3 {
             font-size: clamp(36px, 11vw, 56px) !important;
           }
           /* ── AI Engineering ───────────────────────────────────── */
@@ -833,11 +833,11 @@
             width: 48% !important;
           }
 
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr) !important;
           }
 
-          #work [data-pcard]>* {
+          :is(#work, #work-apps) [data-pcard]>* {
             min-width: 0 !important;
           }
         }
@@ -917,7 +917,7 @@
 
           /* Services: two-column card grid is easier to scan on tablet. */
           #capabilities>div:first-child,
-          #work>div:first-child,
+          :is(#work, #work-apps)>div:first-child,
           #ai-engineering>div:first-child,
           #process>div:first-child,
           #whyme>div:first-child {
@@ -940,28 +940,28 @@
           }
 
           /* Project tabs remain one horizontal strip. */
-          #work>div:nth-child(2) {
+          :is(#work, #work-apps)>div:nth-child(2) {
             flex-wrap: nowrap !important;
             overflow-x: auto !important;
             scrollbar-width: none !important;
             white-space: nowrap !important;
           }
 
-          #work>div:nth-child(2)::-webkit-scrollbar,
+          :is(#work, #work-apps)>div:nth-child(2)::-webkit-scrollbar,
           #capabilities>div::-webkit-scrollbar {
             display: none;
           }
 
-          #work>div:nth-child(2)>div {
+          :is(#work, #work-apps)>div:nth-child(2)>div {
             flex-wrap: nowrap !important;
             flex-shrink: 0 !important;
           }
 
-          #work article[id] {
+          :is(#work, #work-apps) article[id] {
             padding: 0 !important;
           }
 
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             grid-template-columns: 1fr !important;
             padding: 28px !important;
             min-height: 0 !important;
@@ -970,7 +970,7 @@
             overflow: visible !important;
           }
 
-          #work [data-pcard]>* {
+          :is(#work, #work-apps) [data-pcard]>* {
             min-width: 0 !important;
             max-width: 100% !important;
           }
@@ -995,7 +995,7 @@
 
           /* Prevent long labels from breaking layouts. */
           #techstack span,
-          #work button,
+          :is(#work, #work-apps) button,
           #capabilities span {
             max-width: 100%;
           }
@@ -1164,7 +1164,7 @@
 
           /* ---------- SECTION HEADERS ---------- */
           #capabilities>div:first-child,
-          #work>div:first-child,
+          :is(#work, #work-apps)>div:first-child,
           #ai-engineering>div:first-child,
           #process>div:first-child,
           #whyme>div:first-child {
@@ -1178,7 +1178,7 @@
           }
 
           #capabilities h2,
-          #work h2,
+          :is(#work, #work-apps) h2,
           #ai-engineering h2,
           #process h2,
           #whyme h2,
@@ -1190,7 +1190,7 @@
           }
 
           #capabilities>div:first-child p,
-          #work>div:first-child p,
+          :is(#work, #work-apps)>div:first-child p,
           #ai-engineering>div:first-child p,
           #process>div:first-child p,
           #whyme>div:first-child p {
@@ -1241,15 +1241,15 @@
           }
 
           /* ---------- FEATURED WORK ---------- */
-          #work {
+          :is(#work, #work-apps) {
             padding-bottom: 0 !important;
           }
 
-          #work>div:first-child {
+          :is(#work, #work-apps)>div:first-child {
             padding: var(--work-head-py) var(--work-head-px) 24px !important;
           }
 
-          #work>div:nth-child(2) {
+          :is(#work, #work-apps)>div:nth-child(2) {
             display: flex !important;
             flex-wrap: nowrap !important;
             overflow-x: auto !important;
@@ -1259,24 +1259,24 @@
             gap: 8px !important;
           }
 
-          #work>div:nth-child(2)::-webkit-scrollbar {
+          :is(#work, #work-apps)>div:nth-child(2)::-webkit-scrollbar {
             display: none;
           }
 
-          #work>div:nth-child(2)>div {
+          :is(#work, #work-apps)>div:nth-child(2)>div {
             display: flex !important;
             flex-wrap: nowrap !important;
             gap: 6px !important;
             flex: 0 0 auto !important;
           }
 
-          #work>div:nth-child(2) button {
+          :is(#work, #work-apps)>div:nth-child(2) button {
             min-height: 42px !important;
             padding: 9px 13px !important;
             flex: 0 0 auto !important;
           }
 
-          #work article[id] {
+          :is(#work, #work-apps) article[id] {
             padding: 0 10px 10px !important;
             width: 100% !important;
             max-width: 100% !important;
@@ -1285,7 +1285,7 @@
             overflow: visible !important;
           }
 
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             width: 100% !important;
             max-width: 100% !important;
             display: flex !important;
@@ -1299,32 +1299,34 @@
             border-radius: 20px !important;
           }
 
-          #work [data-pcard]>* {
+          :is(#work, #work-apps) [data-pcard]>* {
             width: 100% !important;
             max-width: 100% !important;
             min-width: 0 !important;
           }
 
-          #work article h3 {
+          :is(#work, #work-apps) article h3 {
             font-size: clamp(40px, 13vw, 62px) !important;
             line-height: .84 !important;
           }
 
-          #work article p {
+          :is(#work, #work-apps) article p {
             font-size: 13.5px !important;
             line-height: 1.55 !important;
           }
 
-          #work article a,
-          #work article button {
+          :is(#work, #work-apps) article a,
+          :is(#work, #work-apps) article button {
             min-height: 44px !important;
           }
 
           /* Project visual areas: contain instead of cropping. */
           #proteinix img,
           #distaura img,
+          #evcompanion img,
           #precare img,
-          #vitad img,
+          #happybites img,
+          #localty img,
           #codesafe img {
             max-width: 100% !important;
           }
@@ -1592,11 +1594,11 @@
             width: 86vw !important;
           }
 
-          #work [data-pcard] {
+          :is(#work, #work-apps) [data-pcard] {
             padding: 18px 15px !important;
           }
 
-          #work article h3 {
+          :is(#work, #work-apps) article h3 {
             font-size: clamp(38px, 12.5vw, 52px) !important;
           }
         }
@@ -1632,8 +1634,12 @@
           box-shadow: 0 38px 82px rgba(60, 18, 0, .28) !important;
         }
 
-        [data-cover="vitad"]:hover {
-          box-shadow: 0 46px 96px rgba(var(--ink-rgb), .32) !important;
+        [data-cover="localty"]:hover {
+          box-shadow: 0 46px 96px rgba(60, 18, 0, .28) !important;
+        }
+
+        [data-cover="happybites"]:hover {
+          box-shadow: 0 46px 96px rgba(60, 18, 0, .28) !important;
         }
 
         [data-cover="codesafe"]:hover {
@@ -2541,14 +2547,14 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                02 / FEATURED WORK</div>
+                02 / WEB APPLICATIONS</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
-                Featured<br />Work</h2>
+                Web<br />Applications</h2>
             </div>
             <p
               style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.6);text-transform:uppercase;">
-              Real products, real users, real problems solved</p>
+              Production websites &amp; SaaS platforms</p>
           </div>
 
           <!-- Project tabs + nav arrows -->
@@ -2565,23 +2571,23 @@
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
               <button type="button" onClick="{{ goProject0 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg0 }};color:{{ tabFg0 }};">
-                01 Proteinix
+                01 Distaura
               </button>
               <button type="button" onClick="{{ goProject1 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg1 }};color:{{ tabFg1 }};">
-                02 Distaura
+                02 CodeSafe
               </button>
               <button type="button" onClick="{{ goProject2 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg2 }};color:{{ tabFg2 }};">
-                03 Precare AI
+                03 HappyBites
               </button>
               <button type="button" onClick="{{ goProject3 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg3 }};color:{{ tabFg3 }};">
-                04 Vitad
+                04 Localty
               </button>
               <button type="button" onClick="{{ goProject4 }}"
                 style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ tabBg4 }};color:{{ tabFg4 }};">
-                05 CodeSafe
+                05 Precare AI
               </button>
             </div>
             <button type="button" onClick="{{ nextProject }}"
@@ -2597,8 +2603,378 @@
           <!-- Project cards (shown/hidden by activeProject state) -->
           <div ref="{{ projStage }}" style="padding:0 var(--work-head-px) clamp(26px,3vw,54px);">
 
-            <!-- Project 0: Proteinix -->
+            <!-- Web 1: Distaura -->
             <sc-if value="{{ showProject0 }}" hint-placeholder-val="{{ true }}">
+              <article id="distaura" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                  <!-- Distaura cover — platform overview -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 10%, rgba(27,122,62,.18) 0%, rgba(242,102,28,.12) 48%, rgba(242,102,28,0) 72%);"></div>
+                    <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
+                      data-cover="distaura" aria-label="Open distaura.com in a new tab"
+                      style="position:relative;display:block;width:100%;box-sizing:border-box;overflow:hidden;cursor:pointer;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/distaura-cover.webp" alt="Distaura — the virtual distribution company for modern businesses"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </a>
+                  </div>
+                  <a href="https://www.distaura.com/products" target="_blank" rel="noopener noreferrer"
+                    data-gallery-pill="1"
+                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;text-decoration:none;">
+                    <span>Browse the live catalogue</span>
+                    <span>&#8599;</span>
+                  </a>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div
+                      style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);flex-wrap:wrap;">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">01</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">B2B
+                        SOFTWARE DISTRIBUTION &middot; INDIA</span>
+                      <span
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#1B7A3E;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
+                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>LIVE</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      Distaura</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
+                      The virtual distribution company for modern businesses</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      A two-sided platform that connects software and service suppliers with Indian businesses.
+                      Suppliers reach the market without building a local sales team; businesses get vetted solutions
+                      matched to their problem, priced in rupees and invoiced GST-compliant under one vendor of
+                      record.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MARKETPLACE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">NEXT.JS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">B2B
+                        COMMERCE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">PRODUCT</span>
+                    </div>
+                    <ul style="list-style:none;padding:0;margin:0 0 min(18px,2.1vh);display:grid;gap:7px;">
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Supplier
+                        onboarding &mdash; register, get verified, list services and availability
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Filterable
+                        catalogue by category, city and billing model
+                      </li>
+                      <li
+                        style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
+                        <span
+                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Procurement
+                        desk for vendor agreements, PO invoicing and multi-seat quotes
+                      </li>
+                    </ul>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
+                      <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
+                        style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;text-decoration:none;font-weight:600;transition:transform .3s ease, background .3s ease;"
+                        data-cta="codesafe">VISIT DISTAURA.COM <span style="font-size:13px;">&#8599;</span></a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+
+<!-- Web 2: CodeSafe -->
+            <sc-if value="{{ showProject1 }}" hint-placeholder-val="{{ false }}">
+              <article id="codesafe" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                                    <!-- CodeSafe cover — product overview -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
+                    <div data-cover="codesafe"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/codesafe-cover.webp" alt="CodeSafe — find security vulnerabilities before they reach production"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </div>
+                  </div>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">02</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
+                        SECURITY ANALYSIS</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      CodeSafe</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
+                      Multi-agent security scanner for AI-generated code</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      Six specialist AI agents scan a codebase in parallel &mdash; covering secrets, authentication,
+                      injection, cryptography, AI anti-patterns and production readiness. Builds a dependency graph
+                      instead of scanning files individually.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:min(18px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MULTI-AGENT</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">STATIC
+                        ANALYSIS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">FULL-STACK</span>
+                    </div>
+                    <a href="https://codesafe.co.in/" target="_blank" rel="noopener"
+                      style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
+                      data-cta="codesafe">VISIT CODESAFE.CO.IN <span
+                        style="font-size:13px;">&#8599;</span></a>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+
+            <!-- Web 3: HappyBites -->
+            <sc-if value="{{ showProject2 }}" hint-placeholder-val="{{ false }}">
+              <article id="happybites" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                                    <!-- HappyBites cover — product overview -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1672 / 941);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
+                    <div data-cover="happybites"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/happybites-cover.webp" alt="HappyBites — campus canteen wallet: counter, parent and owner portals"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </div>
+                  </div>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">03</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">CAMPUS
+                        CANTEEN WALLET</span>
+                      <span
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#B85520;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
+                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>IN TESTING</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      HappyBites</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
+                      Prepaid QR wallet for a campus canteen</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      Client project with three portals &mdash; a fast counter for staff, a parent portal for top-ups
+                      and spending limits, and an owner dashboard for sales. Prices, limits and Razorpay payments are
+                      enforced server-side, so the wallet always adds up.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:min(18px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">REACT</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">EXPRESS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">SQLITE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">RAZORPAY</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">FULL-STACK</span>
+                    </div>
+                    <a href="https://happybites-git-client-demo-jagadish110s-projects.vercel.app/" target="_blank" rel="noopener noreferrer"
+                      style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
+                      data-cta="codesafe">VIEW LIVE DEMO <span
+                        style="font-size:13px;">&#8599;</span></a>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+
+            <!-- Web 4: Localty -->
+            <sc-if value="{{ showProject3 }}" hint-placeholder-val="{{ false }}">
+              <article id="localty" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                                    <!-- Localty cover — marketplace home -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1122 / 746);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
+                    <div data-cover="localty"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/localty-cover.webp" alt="Localty — real food from the shops on your own street"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </div>
+                  </div>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">04</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">LOCAL
+                        MARKETPLACE</span>
+                      <span
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#B85520;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
+                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>ONGOING</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      Localty</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
+                      Neighbourhood ordering for small shops, with no commission</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
+                      Lets local restaurants, home kitchens and kirana shops take online orders without giving up a big
+                      cut. Each shop runs its own delivery team, and customers follow orders live on a map.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:min(18px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">NEXT.JS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">NODE.JS</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">SUPABASE</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">FULL-STACK</span>
+                    </div>
+                    <a href="https://www.localty.in/" target="_blank" rel="noopener noreferrer"
+                      style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
+                      data-cta="codesafe">VISIT LOCALTY.IN <span
+                        style="font-size:13px;">&#8599;</span></a>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+
+<!-- Web 5: Precare AI -->
+            <sc-if value="{{ showProject4 }}" hint-placeholder-val="{{ false }}">
+              <article id="precare" style="">
+                <div data-pcard="1"
+                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
+                  <!-- Precare AI cover — app showcase -->
+                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 576);margin:0 auto;">
+                    <div aria-hidden="true"
+                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.18) 0%, rgba(200,120,230,.12) 45%, rgba(242,102,28,0) 70%);"></div>
+                    <div data-cover="precare"
+                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
+                      <img src="images/precare-cover.jpeg" alt="PreCare AI — Smarter Care for a Healthier Tomorrow"
+                        style="width:100%;display:block;border-radius:inherit;" />
+                    </div>
+                  </div>
+                </div>
+                  <div
+                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
+                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
+                      <span
+                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">05</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
+                        PREGNANCY COMPANION &middot; WEB APP</span>
+                    </div>
+                    <h3
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
+                      Precare AI</h3>
+                    <p
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:460px;text-wrap:pretty;font-weight:500;">
+                      AI agent that reads pregnancy lab reports and connects patients to care</p>
+                    <p
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:460px;text-wrap:pretty;">
+                      Upload a lab report &mdash; the AI explains results in plain language, gives a risk verdict, and
+                      finds nearby clinics with priority booking.</p>
+                    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">AI
+                        AGENT</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OCR
+                        + LLM</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">WEB
+                        APP</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </sc-if>
+          </div>
+        </section>
+
+        <!-- ================= FEATURED WORK (tab navigation) ================= -->
+        <section id="work-apps" style="background:var(--surface);">
+          <!-- Section header -->
+          <div
+            style="padding:var(--work-head-py) var(--work-head-px);display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;">
+            <div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
+                03 / MOBILE APPS</div>
+              <h2
+                style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
+                Mobile<br />Apps</h2>
+            </div>
+            <p
+              style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.6);text-transform:uppercase;">
+              Native &amp; AI-powered mobile products</p>
+          </div>
+
+          <!-- Project tabs + nav arrows -->
+          <div
+            style="padding:0 var(--work-head-px) clamp(16px,2vw,28px);display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+            <button type="button" onClick="{{ prevApp }}"
+              style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(var(--ink-rgb),.22);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,transform .2s ease;flex:none;"
+              data-nav-arrow="1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <button type="button" onClick="{{ goApp0 }}"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ appTabBg0 }};color:{{ appTabFg0 }};">
+                01 Proteinix
+              </button>
+              <button type="button" onClick="{{ goApp1 }}"
+                style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;padding:8px 16px;border-radius:999px;border:1px solid rgba(var(--ink-rgb),.22);cursor:pointer;white-space:nowrap;transition:all .2s ease;background:{{ appTabBg1 }};color:{{ appTabFg1 }};">
+                02 EV Companion
+              </button>
+            </div>
+            <button type="button" onClick="{{ nextApp }}"
+              style="width:38px;height:38px;border-radius:50%;border:1px solid rgba(var(--ink-rgb),.22);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,transform .2s ease;flex:none;"
+              data-nav-arrow="1">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Project cards (shown/hidden by activeApp state) -->
+          <div style="padding:0 var(--work-head-px) clamp(26px,3vw,54px);">
+
+            <!-- App 1: Proteinix -->
+            <sc-if value="{{ showApp0 }}" hint-placeholder-val="{{ true }}">
               <article id="proteinix" style="">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
@@ -2715,30 +3091,11 @@
               </article>
             </sc-if>
 
-            <!-- Project 1: Distaura -->
-            <sc-if value="{{ showProject1 }}" hint-placeholder-val="{{ false }}">
-              <article id="distaura" style="">
+            <!-- App 2: EV Companion -->
+            <sc-if value="{{ showApp1 }}" hint-placeholder-val="{{ false }}">
+              <article id="evcompanion" style="">
                 <div data-pcard="1"
                   style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
-                  <!-- Distaura cover — platform overview -->
-                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
-                    <div aria-hidden="true"
-                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 10%, rgba(27,122,62,.18) 0%, rgba(242,102,28,.12) 48%, rgba(242,102,28,0) 72%);"></div>
-                    <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
-                      data-cover="distaura" aria-label="Open distaura.com in a new tab"
-                      style="position:relative;display:block;width:100%;box-sizing:border-box;overflow:hidden;cursor:pointer;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
-                      <img src="images/distaura-cover.webp" alt="Distaura — the virtual distribution company for modern businesses"
-                        style="width:100%;display:block;border-radius:inherit;" />
-                    </a>
-                  </div>
-                  <a href="https://www.distaura.com/products" target="_blank" rel="noopener noreferrer"
-                    data-gallery-pill="1"
-                    style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(var(--ink-rgb),.72);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;font-weight:600;padding:8px 16px;border-radius:999px;text-transform:uppercase;border:1px solid rgba(var(--ink-rgb),.2);cursor:pointer;transition:all .2s ease;text-decoration:none;">
-                    <span>Browse the live catalogue</span>
-                    <span>&#8599;</span>
-                  </a>
-                </div>
                   <div
                     style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
                     <div
@@ -2746,223 +3103,86 @@
                       <span
                         style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">02</span>
                       <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">B2B
-                        SOFTWARE DISTRIBUTION &middot; INDIA</span>
+                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">EV
+                        OWNERSHIP APP</span>
                       <span
-                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#1B7A3E;padding:7px 13px;border-radius:999px;white-space:nowrap;"><span
-                          style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulse 2.4s ease-in-out infinite;"></span>LIVE</span>
+                        style="display:inline-flex;align-items:center;gap:7px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#fff;background:#B85520;padding:7px 13px;border-radius:999px;white-space:nowrap;">ANDROID</span>
                     </div>
                     <h3
-                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
-                      Distaura</h3>
+                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(14px,2.1vh);color:var(--ink);text-transform:uppercase;">
+                      EV Companion</h3>
                     <p
-                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
-                      The virtual distribution company for modern businesses</p>
+                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(22px,2.1vh);max-width:460px;text-wrap:pretty;font-weight:500;">
+                      Offline cost and range companion for EV owners</p>
                     <p
-                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
-                      A two-sided platform that connects software and service suppliers with Indian businesses.
-                      Suppliers reach the market without building a local sales team; businesses get vetted solutions
-                      matched to their problem, priced in rupees and invoiced GST-compliant under one vendor of
-                      record.</p>
+                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:460px;text-wrap:pretty;">
+                      An Android app from Catalyst Core Studios, built with a team of three. It shows what an EV really
+                      costs and how far it can go, using only what the owner enters &mdash; no account, no cloud sync,
+                      no live vehicle data.</p>
                     <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
                       <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MARKETPLACE</span>
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">ANDROID</span>
                       <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">NEXT.JS</span>
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OFFLINE-FIRST</span>
                       <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">B2B
-                        COMMERCE</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">PRODUCT</span>
+                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">TEAM OF 3</span>
                     </div>
                     <ul style="list-style:none;padding:0;margin:0 0 min(18px,2.1vh);display:grid;gap:7px;">
                       <li
                         style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                        <span
-                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Supplier
-                        onboarding &mdash; register, get verified, list services and availability
+                        <span style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>13 calculators for charging cost, time, range and trip planning
                       </li>
                       <li
                         style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                        <span
-                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Filterable
-                        catalogue by category, city and billing model
+                        <span style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Track charging history, expenses and efficiency on the device
                       </li>
                       <li
                         style="display:flex;gap:11px;align-items:baseline;font-size:13px;color:rgba(var(--ink-rgb),.72);">
-                        <span
-                          style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Procurement
-                        desk for vendor agreements, PO invoicing and multi-seat quotes
+                        <span style="width:5px;height:5px;background:var(--ink);flex:none;border-radius:50%;"></span>Compare running cost against petrol or diesel
                       </li>
                     </ul>
-                    <div style="display:flex;align-items:center;gap:12px;margin-top:min(8px,1vh);flex-wrap:wrap;">
-                      <a href="https://www.distaura.com/" target="_blank" rel="noopener noreferrer"
-                        style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;text-decoration:none;font-weight:600;transition:transform .3s ease, background .3s ease;"
-                        data-cta="codesafe">VISIT DISTAURA.COM <span style="font-size:13px;">&#8599;</span></a>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;">
+                    <div style="position:relative;width:100%;height:min(76svh,860px);overflow:hidden;">
+                      <div onClick="{{ openEvCompanion }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:737/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ eX0 }},{{ eY0 }}) scale({{ eS0 }});opacity:{{ eO0 }};z-index:{{ eZ0 }};">
+                        <img src="images/evcompanion-home.png" alt="EV Companion home dashboard"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openEvCompanion }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:737/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ eX1 }},{{ eY1 }}) scale({{ eS1 }});opacity:{{ eO1 }};z-index:{{ eZ1 }};">
+                        <img src="images/evcompanion-calculate.png" alt="EV Companion calculators"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openEvCompanion }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:737/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ eX2 }},{{ eY2 }}) scale({{ eS2 }});opacity:{{ eO2 }};z-index:{{ eZ2 }};">
+                        <img src="images/evcompanion-track.png" alt="EV Companion tracking"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+                      <div onClick="{{ openEvCompanion }}"
+                        style="position:absolute;left:50%;top:50%;box-sizing:content-box;height:calc(100% - 2 * clamp(4px,.6vw,6px) - 2px);aspect-ratio:737/1600;cursor:zoom-in;border:1px solid rgba(var(--ink-rgb),.14);border-radius:clamp(14px,2.2vw,26px);background:#0A0B0D;padding:clamp(4px,.6vw,6px);box-shadow:0 30px 64px rgba(var(--ink-rgb),.22);transition:transform .6s cubic-bezier(.3,.72,.2,1),opacity .6s ease;transform:translate({{ eX3 }},{{ eY3 }}) scale({{ eS3 }});opacity:{{ eO3 }};z-index:{{ eZ3 }};">
+                        <img src="images/evcompanion-compare.png" alt="EV Companion EV vs petrol comparison"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:clamp(10px,1.7vw,21px);display:block;" />
+                      </div>
+
+                    </div>
+                    <div style="display:flex;gap:7px;align-items:center;">
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ eDot0 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ eDot1 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ eDot2 }};"></span>
+                      <span
+                        style="width:26px;height:3px;border-radius:2px;background:var(--ink);transition:opacity .5s ease;opacity:{{ eDot3 }};"></span>
                     </div>
                   </div>
                 </div>
               </article>
             </sc-if>
-
-            <!-- Project 2: Precare -->
-            <sc-if value="{{ showProject2 }}" hint-placeholder-val="{{ false }}">
-              <article id="precare" style="">
-                <div data-pcard="1"
-                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
-                  <!-- Precare AI cover — app showcase -->
-                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 576);margin:0 auto;">
-                    <div aria-hidden="true"
-                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.18) 0%, rgba(200,120,230,.12) 45%, rgba(242,102,28,0) 70%);"></div>
-                    <div data-cover="precare"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.22);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
-                      <img src="images/precare-cover.jpeg" alt="PreCare AI — Smarter Care for a Healthier Tomorrow"
-                        style="width:100%;display:block;border-radius:inherit;" />
-                    </div>
-                  </div>
-                </div>
-                  <div
-                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
-                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
-                      <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">03</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
-                        PREGNANCY COMPANION &middot; WEB APP</span>
-                    </div>
-                    <h3
-                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
-                      Precare AI</h3>
-                    <p
-                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:460px;text-wrap:pretty;font-weight:500;">
-                      AI agent that reads pregnancy lab reports and connects patients to care</p>
-                    <p
-                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:460px;text-wrap:pretty;">
-                      Upload a lab report &mdash; the AI explains results in plain language, gives a risk verdict, and
-                      finds nearby clinics with priority booking.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">AI
-                        AGENT</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">OCR
-                        + LLM</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">WEB
-                        APP</span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </sc-if>
-
-            <!-- Project 3: Vitad -->
-            <sc-if value="{{ showProject3 }}" hint-placeholder-val="{{ false }}">
-              <article id="vitad" style="">
-                <div data-pcard="1"
-                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                  <div
-                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
-                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
-                      <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">04</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">HOME
-                        VITAMIN D TESTING</span>
-                    </div>
-                    <h3
-                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
-                      Vitad</h3>
-                    <p
-                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:460px;text-wrap:pretty;font-weight:500;">
-                      AI-powered at-home vitamin D testing from a test strip photo</p>
-                    <p
-                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:460px;text-wrap:pretty;">
-                      Photograph a test strip &mdash; Gemini Vision AI returns concentration readings, clinical risk
-                      classification, downloadable PDF reports, and trend analytics.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:min(14px,2.1vh);">
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">AI</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MOBILE</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">VISION</span>
-                    </div>
-                  </div>
-                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
-                  <!-- Vitad cover — app showcase -->
-                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1024 / 682);margin:0 auto;">
-                    <div aria-hidden="true"
-                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 20%, rgba(242,102,28,.22) 0%, rgba(255,175,90,.14) 45%, rgba(242,102,28,0) 70%);"></div>
-                    <div data-cover="vitad"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
-                      <img src="images/vitad-hero.jpeg" alt="VitaD — Vitamin D, made visible app showcase"
-                        style="width:100%;display:block;border-radius:inherit;" />
-                    </div>
-                  </div>
-                </div>
-                </div>
-              </article>
-            </sc-if>
-
-            <!-- Project 4: CodeSafe -->
-            <sc-if value="{{ showProject4 }}" hint-placeholder-val="{{ false }}">
-              <article id="codesafe" style="">
-                <div data-pcard="1"
-                  style="width:100%;max-width:1560px;overflow:hidden;box-sizing:border-box;margin:0 auto;background-color:var(--surface);background-image:radial-gradient(rgba(26,17,8,.055) 1px, transparent 1px),radial-gradient(120% 90% at 100% 0%, rgba(242,102,28,.10) 0%, rgba(242,102,28,0) 55%),linear-gradient(180deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,0) 34%);background-size:22px 22px, 100% 100%, 100% 100%;background-position:0 0, 0 0, 0 0;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(20px,2.4vw,38px);box-shadow:0 40px 90px rgba(60,18,0,.14);padding:clamp(16px,2.6vh,48px) clamp(20px,2.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(16px,2.2vw,44px);align-items:center;align-content:center;">
-                <div style="display:flex;flex-direction:column;align-items:center;gap:18px;width:100%;justify-content:center;">
-                                    <!-- CodeSafe cover — product overview -->
-                  <div style="position:relative;width:100%;max-width:calc(min(44svh,450px) * 1671 / 941);margin:0 auto;">
-                    <div aria-hidden="true"
-                      style="position:absolute;inset:clamp(-14px,-1.6vw,-8px);border-radius:clamp(16px,2.2vw,26px);background:radial-gradient(85% 75% at 50% 0%, rgba(242,102,28,.2) 0%, rgba(242,102,28,0) 68%);"></div>
-                    <div data-cover="codesafe"
-                      style="position:relative;width:100%;box-sizing:border-box;overflow:hidden;border:1px solid rgba(var(--ink-rgb),.12);border-radius:clamp(10px,1.4vw,18px);background:#FFFFFF;box-shadow:0 34px 72px rgba(var(--ink-rgb),.24);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;">
-                      <img src="images/codesafe-cover.webp" alt="CodeSafe — find security vulnerabilities before they reach production"
-                        style="width:100%;display:block;border-radius:inherit;" />
-                    </div>
-                  </div>
-                </div>
-                  <div
-                    style="min-height:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;display:flex;flex-direction:column;justify-content:center;">
-                    <div style="display:flex;align-items:center;gap:min(12px,1.7vh);margin-bottom:min(16px,2.1vh);">
-                      <span
-                        style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:40px;line-height:1;color:rgba(var(--ink-rgb),.28);">05</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:var(--ink);border:1px solid rgba(var(--ink-rgb),.22);padding:7px 13px;border-radius:999px;white-space:nowrap;">AI
-                        SECURITY ANALYSIS</span>
-                    </div>
-                    <h3
-                      style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(40px,5.2vw,88px);line-height:.86;letter-spacing:-.02em;margin:0 0 min(10px,1.5vh);color:var(--ink);text-transform:uppercase;">
-                      CodeSafe</h3>
-                    <p
-                      style="font-size:min(15px,2.75vh);line-height:1.55;color:rgba(var(--ink-rgb),.72);margin:0 0 min(12px,1.8vh);max-width:480px;text-wrap:pretty;font-weight:500;">
-                      Multi-agent security scanner for AI-generated code</p>
-                    <p
-                      style="font-size:min(14px,2.5vh);line-height:1.55;color:rgba(var(--ink-rgb),.62);margin:0 0 min(18px,2.1vh);max-width:480px;text-wrap:pretty;">
-                      Six specialist AI agents scan a codebase in parallel &mdash; covering secrets, authentication,
-                      injection, cryptography, AI anti-patterns and production readiness. Builds a dependency graph
-                      instead of scanning files individually.</p>
-                    <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:min(18px,2.1vh);">
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">MULTI-AGENT</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">STATIC
-                        ANALYSIS</span>
-                      <span
-                        style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(var(--ink-rgb),.7);border:1px solid rgba(var(--ink-rgb),.16);padding:7px 12px;border-radius:999px;white-space:nowrap;">FULL-STACK</span>
-                    </div>
-                    <a href="https://codesafe.co.in/" target="_blank" rel="noopener"
-                      style="display:inline-flex;align-items:center;gap:min(10px,1.5vh);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:#fff;background:#F2661C;padding:14px 24px;border-radius:999px;white-space:nowrap;transition:transform .3s ease, background .3s ease;"
-                      data-cta="codesafe">VISIT CODESAFE.CO.IN <span
-                        style="font-size:13px;">&#8599;</span></a>
-                  </div>
-                </div>
-              </article>
-            </sc-if>
-
           </div>
         </section>
+
 
         <!-- ================= AI ENGINEERING ================= -->
         <section id="ai-engineering" style="background:var(--ink);padding:var(--sec-py) var(--sec-px);">
@@ -2971,7 +3191,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.8);margin-bottom:14px;">
-                03 / AI ENGINEERING</div>
+                04 / AI ENGINEERING</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
                 AI Engineering</h2>
@@ -3054,7 +3274,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                04 / PROCESS</div>
+                05 / PROCESS</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
                 How I work</h2>
@@ -3142,7 +3362,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                05 / WHY ME</div>
+                06 / WHY ME</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--ink);text-transform:uppercase;">
                 Why work<br />with me</h2>
@@ -3232,7 +3452,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                06 / ABOUT</div>
+                07 / ABOUT</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(42px,6.4vw,120px);line-height:.84;letter-spacing:-.02em;margin:0 0 22px;color:var(--ink);text-transform:uppercase;">
                 About me</h2>
@@ -3306,7 +3526,7 @@
           <div style="margin-bottom:clamp(26px,3vw,48px);">
             <div
               style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.8);margin-bottom:14px;">
-              07 / STACK</div>
+              08 / STACK</div>
             <h2
               style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(46px,9vw,168px);line-height:.82;letter-spacing:-.02em;margin:0;color:var(--card);text-transform:uppercase;">
               Technical Stack</h2>
@@ -3367,7 +3587,7 @@
             <div>
               <div
                 style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;color:rgba(var(--ink-rgb),.55);margin-bottom:14px;">
-                08 / START</div>
+                09 / START</div>
               <h2
                 style="font-family:'Big Shoulders Display',sans-serif;font-weight:900;font-size:clamp(42px,7vw,130px);line-height:.82;letter-spacing:-.02em;margin:0 0 20px;color:var(--ink);text-transform:uppercase;">
                 Have an idea<br />or problem?</h2>
@@ -3535,7 +3755,7 @@
   </x-dc>
   <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { name: '', email: '', type: '', brief: '', budget: '', timeline: '', sent: false, submitting: false, error: null, shot: 0, gallery: null, designX: '0px', designProgress: 0, activeProject: 0 };
+  state = { name: '', email: '', type: '', brief: '', budget: '', timeline: '', sent: false, submitting: false, error: null, shot: 0, gallery: null, designX: '0px', designProgress: 0, activeProject: 0, activeApp: 0 };
 
   constructor(props) {
     super(props);
@@ -3562,12 +3782,14 @@ class Component extends DCLogic {
 
   equalizeWorkCards() {
     const run = () => {
-      const cards = Array.from(document.querySelectorAll('#work article > div'));
-      if (!cards.length) return;
-      if (window.innerWidth <= 880) { cards.forEach((c) => { c.style.height = ''; }); return; }
-      cards.forEach((c) => { c.style.height = ''; });
-      const tallest = Math.max(...cards.map((c) => c.offsetHeight));
-      cards.forEach((c) => { c.style.height = tallest + 'px'; });
+      ['#work', '#work-apps'].forEach((sel) => {
+        const cards = Array.from(document.querySelectorAll(sel + ' article > div'));
+        if (!cards.length) return;
+        if (window.innerWidth <= 880) { cards.forEach((c) => { c.style.height = ''; }); return; }
+        cards.forEach((c) => { c.style.height = ''; });
+        const tallest = Math.max(...cards.map((c) => c.offsetHeight));
+        cards.forEach((c) => { c.style.height = tallest + 'px'; });
+      });
     };
     run();
     this.equalizeTimer = setInterval(run, 600);
@@ -3605,7 +3827,7 @@ class Component extends DCLogic {
     this.motionTimer = setInterval(onScroll, 120);
     onScroll();
 
-    const sel = '#capabilities article, #capabilities h2, #work h3, #process article, #process h2, #process > div > div, #whyme h2, #whyme > div:last-child > div, #ai-engineering h2, #ai-engineering > div:last-child > div, #about h2, #about p, #start h2, #start form, #techstack h2, #techstack > div:last-child > div';
+    const sel = '#capabilities article, #capabilities h2, #work h3, #work-apps h3, #process article, #process h2, #process > div > div, #whyme h2, #whyme > div:last-child > div, #ai-engineering h2, #ai-engineering > div:last-child > div, #about h2, #about p, #start h2, #start form, #techstack h2, #techstack > div:last-child > div';
     const seen = new Set();
     const targets = [];
     document.querySelectorAll(sel).forEach((el) => {
@@ -3668,7 +3890,7 @@ class Component extends DCLogic {
 
   setupSwipe() {
     // Add touch swipe to coverflow containers for mobile
-    const coverflows = document.querySelectorAll('#proteinix');
+    const coverflows = document.querySelectorAll('#proteinix, #evcompanion');
     coverflows.forEach((article) => {
       const container = article.querySelector('[style*="overflow:hidden"]');
       if (!container) return;
@@ -3799,18 +4021,19 @@ class Component extends DCLogic {
           ['images/proteinix-coach.png', 'AI coach']
         ]
       },
-      vitad: {
-        kicker: '04 / HOME VITAMIN D TESTING',
-        title: 'Vitad',
-        h: '70vh', ar: '807/1600',
+      evcompanion: {
+        kicker: '02 / EV OWNERSHIP COMPANION',
+        title: 'EV Companion',
+        h: '70vh', ar: '737/1600',
         shots: [
-          ['images/vitad-home.jpeg', 'Current status & scan entry'],
-          ['images/vitad-scan.jpeg', 'Test strip capture'],
-          ['images/vitad-history.jpeg', 'Scan history & trend']
+          ['images/evcompanion-home.png', 'Home — battery, range and cost per km'],
+          ['images/evcompanion-calculate.png', '13 offline calculators'],
+          ['images/evcompanion-track.png', 'Charging, distance and efficiency tracking'],
+          ['images/evcompanion-compare.png', 'EV vs petrol savings']
         ]
       },
       codesafe: {
-        kicker: '05 / AI SECURITY ANALYSIS',
+        kicker: '02 / AI SECURITY ANALYSIS',
         title: 'CodeSafe',
         h: '46vh', ar: '1600/900',
         shots: [
@@ -3821,7 +4044,7 @@ class Component extends DCLogic {
         ]
       },
       precare: {
-        kicker: '03 / AI PREGNANCY COMPANION',
+        kicker: '05 / AI PREGNANCY COMPANION',
         title: 'Precare AI',
         h: '42vh', ar: '1500/730',
         shots: [
@@ -3874,27 +4097,29 @@ class Component extends DCLogic {
     const g = this.galleries()[this.state.gallery];
     const labels = ['AI AGENT', 'RAG / KNOWLEDGE', 'AI SAAS', 'MOBILE APP', 'WEB APP', 'AI INTEGRATION', 'OTHER'];
     const ap = this.state.activeProject;
+    const aa = this.state.activeApp;
     const N_PROJECTS = 5;
-    const tabActive = (i) => ({
-      tabBg: ap === i ? 'var(--ink)' : 'transparent',
-      tabFg: ap === i ? 'var(--surface)' : 'rgba(var(--ink-rgb),.7)'
+    const N_APPS = 2;
+    const tabActive = (cur, i) => ({
+      bg: cur === i ? 'var(--ink)' : 'transparent',
+      fg: cur === i ? 'var(--surface)' : 'rgba(var(--ink-rgb),.7)'
     });
     return {
       capScroll: this.capScroll,
       projStage: this.projStage,
       designX: this.state.designX,
       designProgress: this.state.designProgress,
-      // Tab navigation
+      // Web applications tabs
       showProject0: ap === 0,
       showProject1: ap === 1,
       showProject2: ap === 2,
       showProject3: ap === 3,
       showProject4: ap === 4,
-      tabBg0: tabActive(0).tabBg, tabFg0: tabActive(0).tabFg,
-      tabBg1: tabActive(1).tabBg, tabFg1: tabActive(1).tabFg,
-      tabBg2: tabActive(2).tabBg, tabFg2: tabActive(2).tabFg,
-      tabBg3: tabActive(3).tabBg, tabFg3: tabActive(3).tabFg,
-      tabBg4: tabActive(4).tabBg, tabFg4: tabActive(4).tabFg,
+      tabBg0: tabActive(ap, 0).bg, tabFg0: tabActive(ap, 0).fg,
+      tabBg1: tabActive(ap, 1).bg, tabFg1: tabActive(ap, 1).fg,
+      tabBg2: tabActive(ap, 2).bg, tabFg2: tabActive(ap, 2).fg,
+      tabBg3: tabActive(ap, 3).bg, tabFg3: tabActive(ap, 3).fg,
+      tabBg4: tabActive(ap, 4).bg, tabFg4: tabActive(ap, 4).fg,
       prevProject: () => this.setState((s) => ({ activeProject: (s.activeProject - 1 + N_PROJECTS) % N_PROJECTS })),
       nextProject: () => this.setState((s) => ({ activeProject: (s.activeProject + 1) % N_PROJECTS })),
       goProject0: () => this.setState({ activeProject: 0 }),
@@ -3902,14 +4127,24 @@ class Component extends DCLogic {
       goProject2: () => this.setState({ activeProject: 2 }),
       goProject3: () => this.setState({ activeProject: 3 }),
       goProject4: () => this.setState({ activeProject: 4 }),
+      // Mobile apps tabs
+      showApp0: aa === 0,
+      showApp1: aa === 1,
+      appTabBg0: tabActive(aa, 0).bg, appTabFg0: tabActive(aa, 0).fg,
+      appTabBg1: tabActive(aa, 1).bg, appTabFg1: tabActive(aa, 1).fg,
+      prevApp: () => this.setState((s) => ({ activeApp: (s.activeApp - 1 + N_APPS) % N_APPS })),
+      nextApp: () => this.setState((s) => ({ activeApp: (s.activeApp + 1) % N_APPS })),
+      goApp0: () => this.setState({ activeApp: 0 }),
+      goApp1: () => this.setState({ activeApp: 1 }),
       ...this.coverflow('p', 5, '-104%', '4%'),
+      ...this.coverflow('e', 4, '-104%', '4%'),
       galleryOpen: !!g,
       galleryKicker: g ? g.kicker : '',
       galleryTitle: g ? g.title : '',
       galleryShots: g ? g.shots.map(([src, label]) => ({ src, label, h: g.h, ar: g.ar })) : [],
       openProteinix: () => this.openGallery('proteinix'),
+      openEvCompanion: () => this.openGallery('evcompanion'),
       openPrecare: () => this.openGallery('precare'),
-      openVitad: () => this.openGallery('vitad'),
       openCodesafe: () => this.openGallery('codesafe'),
       closeGallery: () => this.closeGallery(),
       sent: this.state.sent,
